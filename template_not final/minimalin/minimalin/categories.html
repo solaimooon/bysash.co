@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>دسته‌بندی محصولات | BY SASH.CO</title>
+<meta name="description" content="مرور همه دسته‌بندی‌های پوشاک زنانه BY SASH.CO — مانتو، شومیز، شلوار، لباس مجلسی و بیشتر." />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#F5B301" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">BY</span>
+      <span class="logo-text">SASH<em>.CO</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">خانه</a>
+      <a href="shop.html">فروشگاه</a>
+      <a href="categories.html" class="active">دسته‌بندی‌ها</a>
+      <a href="about.html">درباره ما</a>
+      <a href="contact.html">تماس با ما</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn cart-toggle" aria-label="سبد خرید">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
+        <i class="fa-solid fa-download"></i> نصب اپلیکیشن
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE BANNER -->
+<section class="page-banner">
+  <div class="container">
+    <div>
+      <nav class="breadcrumb">
+        <a href="index.html">خانه</a>
+        <i class="fa-solid fa-chevron-left"></i>
+        <span class="current">دسته‌بندی‌ها</span>
+      </nav>
+      <h1>دسته‌بندی محصولات</h1>
+      <p>هر آنچه یک بانوی مدرن نیاز دارد — از استایل روزمره تا مجلسی — در یک نگاه.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES GRID -->
+<section class="cats-section">
+  <div class="container">
+
+    <div class="cats-grid">
+
+      <a href="shop.html?cat=manto" class="cats-card wide tall">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?w=900&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>مانتو</h3>
+            <div class="cats-count">۱۲۴ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=manto" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1583496661160-fb5886a13d44?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>شومیز و بلوز</h3>
+            <div class="cats-count">۸۶ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=shalvar" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>شلوار</h3>
+            <div class="cats-count">۶۲ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=daman" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1583496661160-fb5886a13d44?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>دامن</h3>
+            <div class="cats-count">۳۴ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=majlesi" class="cats-card wide tall">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>لباس مجلسی</h3>
+            <div class="cats-count">۴۸ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=set" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>ست دو تکه</h3>
+            <div class="cats-count">۲۹ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=hejab" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1611601322175-ef8ec8c85f01?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>شال و روسری</h3>
+            <div class="cats-count">۵۷ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=accessories" class="cats-card">
+        <div class="cats-img" style="background-image:url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&auto=format&fit=crop')"></div>
+        <div class="cats-body">
+          <div>
+            <h3>اکسسوری</h3>
+            <div class="cats-count">۴۱ محصول</div>
+          </div>
+          <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Brand highlight -->
+    <div class="cats-brands">
+      <div class="section-head center">
+        <span class="eyebrow">عمده‌فروشی</span>
+        <h2>برندهای اختصاصی ما</h2>
+      </div>
+      <div class="brands-grid">
+        <a href="shop.html?brand=solos" class="brand-card brand-dark">
+          <div class="brand-inner">
+            <span class="brand-tag">WHOLESALE</span>
+            <h3 class="brand-title">SOLOS</h3>
+            <p>خط تولید کلاسیک و مینیمال با پارچه‌های درجه یک.</p>
+            <span class="brand-cta">محصولات SOLOS <i class="fa-solid fa-arrow-left"></i></span>
+          </div>
+        </a>
+        <a href="shop.html?brand=swa" class="brand-card brand-light">
+          <div class="brand-inner">
+            <span class="brand-tag">WHOLESALE</span>
+            <h3 class="brand-title">SwA</h3>
+            <p>کالکشن مدرن و ترند روز؛ مخصوص فروشگاه‌های به‌روز.</p>
+            <span class="brand-cta">محصولات SwA <i class="fa-solid fa-arrow-left"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="logo footer-logo"><span class="logo-mark">BY</span><span class="logo-text">SASH<em>.CO</em></span></div>
+      <p>پوشاک زنانه با طراحی مدرن و دوخت ممتاز. عمده‌فروشی برندهای SOLOS و SwA.</p>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>دسترسی سریع</h4>
+      <ul>
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="shop.html">فروشگاه</a></li>
+        <li><a href="categories.html">دسته‌بندی‌ها</a></li>
+        <li><a href="about.html">درباره ما</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>عمده‌فروشی</h4>
+      <ul>
+        <li><a href="shop.html?brand=solos">SOLOS</a></li>
+        <li><a href="shop.html?brand=swa">SwA</a></li>
+        <li><a href="contact.html">درخواست همکاری</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>ارتباط با ما</h4>
+      <p>۰۲۱-۰۰۰۰۰۰۰۰</p>
+      <p>info@bysash.co</p>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© ۲۰۲۶ BY SASH.CO — تمامی حقوق محفوظ است</p>
+  </div>
+</footer>
+
+<script>
+  // Cart badge from localStorage
+  (function(){
+    try{
+      const cart = JSON.parse(localStorage.getItem('bysash_cart')||'[]');
+      const count = cart.reduce((s,i)=>s+(i.qty||1),0);
+      const el = document.getElementById('cartCount'); if(el) el.textContent = count;
+    }catch(e){}
+  })();
+
+  // PWA install
+  let deferredPrompt;
+  const installBtn = document.getElementById('pwaInstallBtn');
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferredPrompt = e; if(installBtn) installBtn.hidden = false;
+  });
+  installBtn?.addEventListener('click', async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null; installBtn.hidden = true;
+  });
+  if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+</script>
+</body>
+</html>

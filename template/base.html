@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    {% block meta %}
+    {% endblock %}
+    <title>
+        {% block title %}
+            بای ساش
+        {% endblock %}
+    </title>
+
+
+    {% block extra_css %}
+    {% endblock %}
+
+
+    {% block extra_head %}
+    {% endblock %}
+
+    {% block structured_data %}
+    {% endblock %}
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">BY</span>
+      <span class="logo-text">SASH<em>.CO</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#hero">خانه</a>
+      <a href="#categories">دسته‌بندی</a>
+      <a href="#bestselling">پرفروش‌ها</a>
+      <a href="#brands">برندها</a>
+      <a href="#blog">وبلاگ</a>
+      <a href="#contact">تماس</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn" aria-label="حساب کاربری"><i class="fa-regular fa-user"></i></button>
+      <button class="icon-btn cart-toggle" aria-label="سبد خرید">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
+        <i class="fa-solid fa-download"></i> نصب اپلیکیشن
+      </button>
+      <button class="icon-btn menu-toggle" aria-label="منو"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+
+{% block content %}
+{% endblock %}
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+
+        <!-- معرفی -->
+        <div>
+            <div class="logo footer-logo">
+                <span class="logo-mark">BY</span>
+                <span class="logo-text">SASH<em>.CO</em></span>
+            </div>
+
+            <p>
+                پوشاک زنانه با طراحی مدرن و دوخت ممتاز.
+                عمده‌فروشی برندهای SOLOS و SwA.
+            </p>
+
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <!-- دسترسی سریع -->
+        <div>
+            <h4>دسترسی سریع</h4>
+            <ul>
+                <li><a href="#hero">خانه</a></li>
+                <li><a href="#categories">دسته‌بندی</a></li>
+                <li><a href="#bestselling">درباره ما</a></li>
+                <li><a href="#brands">تماس باما</a></li>
+            </ul>
+        </div>
+
+        <!-- اطلاعات تماس -->
+        <div>
+            <h4>اطلاعات تماس</h4>
+
+            <ul class="footer-contact">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    تهران، میدان هفت تیر، پاساژ مادر بلوک B طبقه سوم واحد ۳۳
+                </li>
+
+{#                <li>#}
+{#                    <i class="fa-solid fa-phone"></i>#}
+{#                    <a href="tel:02112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>#}
+{#                </li>#}
+
+                <li>
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <a href="tel:09122233033">09122233033</a>
+                </li>
+
+{#                <li>#}
+{#                    <i class="fa-solid fa-envelope"></i>#}
+{#                    <a href="mailto:info@bysash.co">info@bysash.co</a>#}
+{#                </li>#}
+            </ul>
+        </div>
+
+        <!-- نماد اعتماد -->
+        <div>
+            <h4>اعتماد شما، سرمایه ما</h4>
+
+            <div class="footer-enamad">
+
+                <a href="#" target="_blank">
+                    <img src=""
+                         alt="نماد اعتماد الکترونیکی">
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom container">
+        <p>© ۲۰۲۶ BY SASH.CO — تمامی حقوق محفوظ است</p>
+    </div>
+</footer>
+
+{% block modals %}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+</html>

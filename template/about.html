@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta %}
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="درباره تولیدی پوشاک زنانه BY SASH.CO و برندهای عمده‌فروشی SOLOS و SwA."/>
+    <meta name="theme-color" content="#F5B301"/>
+{% endblock %}
+{% block title %}
+    درباره ما | BY SASH.CO
+{% endblock %}
+
+{% block extra_head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- PAGE BANNER -->
+    <section class="page-banner about-hero">
+        <div class="container">
+            <div>
+                <nav class="breadcrumb">
+                    <a href="index.html">خانه</a>
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <span class="current">درباره ما</span>
+                </nav>
+                <h1>درباره BY SASH.CO</h1>
+                <p>مستقیم از تولید‌کننده، بدون واسطه — با تعهد به کیفیت و طراحی به‌روز.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY / INTRO -->
+    <section class="section">
+        <div class="container about-intro">
+            <div class="about-media">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&auto=format&fit=crop"
+                     alt="کارگاه تولید BY SASH.CO"/>
+            </div>
+            <div>
+                <span class="eyebrow">داستان ما</span>
+                <h2>از یک کارگاه کوچک تا برندی مورد اعتماد</h2>
+                <p>
+                    BY SASH.CO یک تولیدی تخصصی پوشاک زنانه است که با تکیه بر تجربه‌ی سال‌ها فعالیت در بازار،
+                    محصولاتی با کیفیت، دوام و طراحی روز تولید می‌کند. ما بدون واسطه، محصولات را از خط تولید
+                    مستقیماً به مشتری نهایی و همکاران عمده‌فروش می‌رسانیم.
+                </p>
+                <p>
+                    هر قطعه‌ای که تولید می‌کنیم، از انتخاب پارچه تا دوخت نهایی، زیر نظر تیم طراحی و کنترل
+                    کیفیت داخلی تأیید می‌شود. هدف ما ساختن گارد‌روبی مدرن، راحت و ماندگار برای بانوی امروز است.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="about-values">
+        <div class="container">
+            <div class="section-head center">
+                <span class="eyebrow">چرا BY SASH.CO؟</span>
+                <h2>ارزش‌هایی که ما را متمایز می‌کند</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h4>تولید مستقیم</h4>
+                    <p>بدون واسطه، از خط تولید تا دست شما — یعنی قیمت واقعی و کیفیت تضمینی.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-scissors"></i></div>
+                    <h4>دوخت حرفه‌ای</h4>
+                    <p>استفاده از بهترین پارچه‌ها و دوخت با ماشین‌آلات صنعتی روز.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h4>طراحی به‌روز</h4>
+                    <p>تیم طراحی داخلی همگام با ترندهای جهانی و سلیقه بانوی ایرانی.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4>ارسال سریع</h4>
+                    <p>بسته‌بندی حرفه‌ای و ارسال به سراسر کشور در کوتاه‌ترین زمان.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="about-services">
+        <div class="container">
+            <div class="section-head center">
+                <span class="eyebrow">خدمات ما</span>
+                <h2>خرده و عمده — هر دو در یک برند</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-tag">RETAIL</span>
+                    <h3>فروش خرده</h3>
+                    <p>خرید تکی از فروشگاه آنلاین با تنوع کامل رنگ و سایز، ضمانت اصالت و مرجوعی ۷ روزه.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-tag">WHOLESALE</span>
+                    <h3>فروش عمده</h3>
+                    <p>قیمت ویژه همکار برای فروشگاه‌ها؛ سفارش‌های سری‌دوزی با برندهای SOLOS و SwA.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-tag">CUSTOM</span>
+                    <h3>سفارش اختصاصی</h3>
+                    <p>امکان تولید مدل اختصاصی برای برندهای شخصی با حداقل تیراژ مشخص.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section class="about-brands">
+        <div class="container">
+            <div class="section-head center">
+                <span class="eyebrow">برندهای ما</span>
+                <h2>دو خط تولید، یک استاندارد کیفیت</h2>
+            </div>
+            <div class="brands-grid">
+                <a href="shop.html?brand=solos" class="brand-card brand-dark">
+                    <div class="brand-inner">
+                        <span class="brand-tag">WHOLESALE</span>
+                        <h3 class="brand-title">SOLOS</h3>
+                        <p>کالکشن کلاسیک و مینیمال با تمرکز بر پارچه‌های پریمیوم و برش‌های ماندگار.</p>
+                        <span class="brand-cta">محصولات SOLOS <i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                <a href="shop.html?brand=swa" class="brand-card brand-light">
+                    <div class="brand-inner">
+                        <span class="brand-tag">WHOLESALE</span>
+                        <h3 class="brand-title">SwA</h3>
+                        <p>خط ترندی و روزآمد؛ رنگ‌بندی گسترده و طراحی جسورانه برای فروشگاه‌های پرفروش.</p>
+                        <span class="brand-cta">محصولات SwA <i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pwa-cta">
+        <div class="container pwa-cta-inner">
+            <div>
+                <h2>آماده همکاری با ما هستید؟</h2>
+                <p>برای دریافت لیست قیمت عمده یا مشاوره سفارش اختصاصی، همین حالا با ما تماس بگیرید.</p>
+            </div>
+            <a href="contact.html" class="btn btn-mango btn-lg"><i class="fa-solid fa-headset"></i> تماس با ما</a>
+        </div>
+    </section>
+    <script>
+        (function () {
+            try {
+                const cart = JSON.parse(localStorage.getItem('bysash_cart') || '[]');
+                const count = cart.reduce((s, i) => s + (i.qty || 1), 0);
+                const el = document.getElementById('cartCount');
+                if (el) el.textContent = count;
+            } catch (e) {
+            }
+        })();
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwaInstallBtn');
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) installBtn.hidden = false;
+        });
+        installBtn?.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            installBtn.hidden = true;
+        });
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {
+            });
+        }
+    </script>
+{% endblock %}
+
+
+

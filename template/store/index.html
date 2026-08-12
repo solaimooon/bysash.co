@@ -1,0 +1,569 @@
+{% extends "base.html" %}
+{% load static %}
+{% load store_tags %}
+{% block meta %}
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#F5B301"/>
+{% endblock %}
+
+{% block title %}
+    BY SASH.CO | پوشاک زنانه
+{% endblock %}
+
+{% block extra_head %}
+    <link rel="manifest" href="manifest.json"/>
+    <link rel="icon" href="{% static 'icons/icon-192.png' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'icons/icon-192.png' %}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <!-- ============ HERO SLIDER ============ -->
+    <section id="hero" class="hero-slider">
+        <div class="slides">
+            <div class="slide active"
+                 style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80')">
+                <div class="container slide-content">
+                    <span class="eyebrow">مجموعه جدید ۱۴۰۴</span>
+                    <h1>ظرافت را در هر جزئیات <br/>تجربه کنید</h1>
+                    <p>پوشاک زنانه مدرن، دوخت ممتاز و طراحی اختصاصی</p>
+                    <a href="#bestselling" class="btn btn-mango">مشاهده کالکشن</a>
+                </div>
+            </div>
+            <div class="slide"
+                 style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80')">
+                <div class="container slide-content">
+                    <span class="eyebrow">تخفیف ویژه</span>
+                    <h1>تا ۴۰٪ تخفیف <br/>روی محصولات منتخب</h1>
+                    <p>فرصت محدود برای خرید بهترین‌ها</p>
+                    <a href="#categories" class="btn btn-mango">شروع خرید</a>
+                </div>
+            </div>
+            <div class="slide"
+                 style="background-image:url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80')">
+                <div class="container slide-content">
+                    <span class="eyebrow">عمده‌فروشی</span>
+                    <h1>همکاری با برندهای <br/>SOLOS و SwA</h1>
+                    <p>شرایط ویژه برای همکاران و فروشندگان</p>
+                    <a href="#brands" class="btn btn-mango">اطلاعات بیشتر</a>
+                </div>
+            </div>
+        </div>
+        <button class="slider-arrow prev" id="heroPrev"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="slider-arrow next" id="heroNext"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="slider-dots" id="heroDots"></div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section id="categories" class="section categori__section">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">خرید بر اساس</span>
+                <h2>دسته‌بندی محصولات</h2>
+            </div>
+            <div id="catGrid" class="cat-grid">
+
+                {% for category in categories %}
+
+                    <a href="#" class="cat-card">
+
+                        <div class="cat-img"
+                             style="background-image:url('{{ category.image.url }}')">
+                        </div>
+
+                        <div class="cat-info">
+                            <h4>{{ category.name }}</h4>
+
+                            <span>
+                    مشاهده
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
+                        </div>
+
+                    </a>
+
+                {% empty %}
+
+                    <p>دسته‌بندی‌ای ثبت نشده است.</p>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BEST SELLING SLIDER ============ -->
+    <section id="bestselling" class="section best__selling">
+        <div class="container">
+            <div class="section-head between">
+                <div>
+                    <span class="eyebrow">منتخب فصل</span>
+                    <h2> محصولات منتخب </h2>
+                </div>
+                <div class="head-actions">
+                    <a href="#all" class="btn btn-outline btn-sm">مشاهده همه محصولات</a>
+                    <button class="icon-btn round" id="bsPrev"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="icon-btn round" id="bsNext"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
+            </div>
+            <div class="products-slider" id="productsSlider">
+                <div id="productsTrack" class="products-track">
+
+                    {% for product in featured_products %}
+
+                        <div class="product-card" data-id="{{ product.id }}">
+
+                            <div class="product-media">
+
+                                {% if product.badge %}
+                                    <span class="badge">{{ product.badge }}</span>
+                                {% endif %}
+
+                                {#                                <a href="{% url 'product-detail' product.slug %}">#}
+                                {% if product.cover_image %}
+                                    <img src="{{ product.cover_image.image.url }}"
+                                         alt="{{ product.cover_image.alt_text|default:product.name }}"
+                                         loading="lazy">
+                                {% endif %}
+
+                                <div class="product-actions">
+
+                                    <button class="pa-btn quick-view"
+                                            data-id="{{ product.id }}"
+                                            title="نمایش سریع">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+
+                                    <button class="pa-btn"
+                                            title="علاقه‌مندی">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+
+                                    <button class="pa-btn add-cart"
+                                            data-id="{{ product.id }}"
+                                            title="افزودن به سبد">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <h4>
+                                    {#                                    <a href="{% url 'product-detail' product.slug %}">#}
+                                    {{ product.name }}
+                                    </a>
+                                </h4>
+
+                                {% if product.brand %}
+                                    <small class="text-muted">
+                                        {{ product.brand.name }}
+                                    </small>
+                                {% endif %}
+
+                                <div class="price">
+
+                                    {% if product.discount_price %}
+                                        <span class="old">
+
+            {{ product.price|price_format }}
+            تومان
+        </span>
+
+                                        <span class="new">
+
+            {{ product.discount_price|price_format }}
+            تومان
+        </span>
+
+                                    {% else %}
+
+                                        <span class="new">
+            {{ product.price|price_format }}
+            تومان
+        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                                <button class="btn btn-mango btn-block btn-sm add-cart"
+                                        data-id="{{ product.id }}">
+
+                                    <i class="fa-solid fa-plus"></i>
+                                    افزودن به سبد خرید
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    {% empty %}
+
+                        <p>محصولی برای نمایش وجود ندارد.</p>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BRANDS (SOLOS / SwA) ============ -->
+    <section id="brands" class="section brands-section">
+        <div class="container">
+            <div class="section-head center">
+                <span class="eyebrow">عمده‌فروشی BY SASH.CO</span>
+                <h2>برندهای اختصاصی ما</h2>
+                <p class="lead">دو خط تولید مجزا برای سلیقه‌های متفاوت — با شرایط ویژه همکاری</p>
+            </div>
+            <div class="brands-grid">
+                <a href="#brand-solos" class="brand-card brand-dark">
+                    <div class="brand-inner">
+                        <span class="brand-tag">Premium Line</span>
+                        <h3 class="brand-title">SOLOS</h3>
+                        <p>خط لوکس و مینیمال با پارچه‌های وارداتی</p>
+                        <span class="brand-cta">مشاهده کالکشن <i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                <a href="#brand-swa" class="brand-card brand-light">
+                    <div class="brand-inner">
+                        <span class="brand-tag">Everyday Line</span>
+                        <h3 class="brand-title">SwA</h3>
+                        <p>طراحی راحت و روزمره با قیمت مناسب عمده</p>
+                        <span class="brand-cta">مشاهده کالکشن <i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section features">
+        <div class="container features-grid">
+            <div class="feature"><i class="fa-solid fa-truck-fast"></i>
+                <div><h4>ارسال سریع</h4>
+                    <p>ارسال به سراسر کشور</p></div>
+            </div>
+            <div class="feature"><i class="fa-solid fa-shield-halved"></i>
+                <div><h4>ضمانت اصالت</h4>
+                    <p>تضمین کیفیت دوخت</p></div>
+            </div>
+            <div class="feature"><i class="fa-solid fa-rotate-left"></i>
+                <div><h4>۷ روز بازگشت</h4>
+                    <p>ضمانت بازگشت وجه</p></div>
+            </div>
+            <div class="feature"><i class="fa-solid fa-headset"></i>
+                <div><h4>پشتیبانی ۲۴/۷</h4>
+                    <p>همیشه در کنار شما</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BLOG ============ -->
+    <section id="blog" class="section blog-section">
+        <div class="container">
+            <div class="section-head between">
+                <div>
+                    <span class="eyebrow">مجله سبک زندگی</span>
+                    <h2>آخرین مطالب وبلاگ</h2>
+                </div>
+                <a href="#all-blog" class="btn btn-outline btn-sm">مشاهده همه مقالات</a>
+            </div>
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============ PWA CTA ============ -->
+    <section class="section pwa-cta">
+        <div class="container pwa-cta-inner">
+            <div>
+                <h2>اپلیکیشن BY SASH.CO را نصب کنید</h2>
+                <p>دسترسی سریع‌تر، تخفیف‌های اختصاصی و اعلان محصولات جدید</p>
+            </div>
+            <button id="pwaInstallCta" class="btn btn-mango btn-lg"><i class="fa-solid fa-mobile-screen"></i> نصب
+                اپلیکیشن
+            </button>
+        </div>
+    </section>
+
+
+
+    <!-- ============ CART DRAWER ============ -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="drawer-head">
+            <h3><i class="fa-solid fa-bag-shopping"></i> سبد خرید</h3>
+            <button class="icon-btn" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-body" id="cartItems"></div>
+        <div class="drawer-foot">
+            <div class="cart-total"><span>جمع کل:</span><strong id="cartTotal">۰ تومان</strong></div>
+            <button class="btn btn-mango btn-block btn-lg">تکمیل خرید</button>
+        </div>
+    </aside>
+
+    <!-- ============ QUICK VIEW MODAL ============ -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="quick-modal" id="quickModal" aria-hidden="true">
+        <button class="modal-close" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+
+    <!-- ============ TOAST ============ -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        /* =============== DATA =============== */
+
+        const blogPosts = [
+            {
+                title: 'راهنمای انتخاب مانتو برای فصل بهار',
+                cat: 'مد و استایل',
+                img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
+                date: '۱۵ خرداد'
+            },
+            {
+                title: 'ترندهای رنگی سال ۱۴۰۴ در پوشاک',
+                cat: 'ترند روز',
+                img: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',
+                date: '۱۰ خرداد'
+            },
+            {
+                title: 'چگونه یک کمد کپسولی زنانه بسازیم؟',
+                cat: 'سبک زندگی',
+                img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+                date: '۵ خرداد'
+            },
+        ];
+
+        const fmt = n => n.toLocaleString('fa-IR') + ' تومان';
+
+        /* =============== HERO SLIDER =============== */
+        (function () {
+            const slides = document.querySelectorAll('.hero-slider .slide');
+            const dots = document.getElementById('heroDots');
+            let idx = 0, timer;
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.className = 'dot' + (i === 0 ? ' active' : '');
+                d.onclick = () => go(i);
+                dots.appendChild(d);
+            });
+
+            function go(i) {
+                slides[idx].classList.remove('active');
+                dots.children[idx].classList.remove('active');
+                idx = (i + slides.length) % slides.length;
+                slides[idx].classList.add('active');
+                dots.children[idx].classList.add('active');
+            }
+
+            document.getElementById('heroNext').onclick = () => {
+                go(idx + 1);
+                reset()
+            };
+            document.getElementById('heroPrev').onclick = () => {
+                go(idx - 1);
+                reset()
+            };
+
+            function reset() {
+                clearInterval(timer);
+                timer = setInterval(() => go(idx + 1), 6000)
+            }
+
+            reset();
+        })();
+
+
+        /* =============== PRODUCTS SLIDER =============== */
+
+        const slider = document.getElementById('productsSlider');
+        document.getElementById('bsNext').onclick = () => slider.scrollBy({left: -320, behavior: 'smooth'});
+        document.getElementById('bsPrev').onclick = () => slider.scrollBy({left: 320, behavior: 'smooth'});
+
+        /* =============== BLOG =============== */
+        document.getElementById('blogGrid').innerHTML = blogPosts.map(b => `
+  <article class="blog-card">
+    <div class="blog-img" style="background-image:url('${b.img}')"><span class="blog-cat">${b.cat}</span></div>
+    <div class="blog-body">
+      <span class="blog-date"><i class="fa-regular fa-calendar"></i> ${b.date}</span>
+      <h3>${b.title}</h3>
+      <a href="#" class="read-more">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  </article>`).join('');
+
+        /* =============== CART =============== */
+        const cart = [];
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const drawer = document.getElementById('cartDrawer');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+
+        function openCart() {
+            drawer.classList.add('open');
+            drawerBackdrop.classList.add('open')
+        }
+
+        function closeCart() {
+            drawer.classList.remove('open');
+            drawerBackdrop.classList.remove('open')
+        }
+
+        document.querySelector('.cart-toggle').onclick = openCart;
+        document.getElementById('closeCart').onclick = closeCart;
+        drawerBackdrop.onclick = closeCart;
+
+        function renderCart() {
+            cartCount.textContent = cart.reduce((s, i) => s + i.qty, 0);
+            if (!cart.length) {
+                cartItems.innerHTML = '<p class="empty">سبد خرید شما خالی است</p>';
+                cartTotal.textContent = fmt(0);
+                return
+            }
+            cartItems.innerHTML = cart.map(i => `
+    <div class="cart-item">
+      <img src="${i.img}" alt=""/>
+      <div class="ci-info">
+        <h5>${i.name}</h5>
+        <span>${fmt(i.price)}</span>
+        <div class="qty">
+          <button data-id="${i.id}" data-op="-">−</button>
+          <span>${i.qty}</span>
+          <button data-id="${i.id}" data-op="+">+</button>
+        </div>
+      </div>
+      <button class="ci-remove" data-id="${i.id}"><i class="fa-solid fa-trash"></i></button>
+    </div>`).join('');
+            cartTotal.textContent = fmt(cart.reduce((s, i) => s + i.price * i.qty, 0));
+        }
+
+        function addToCart(id) {
+            const p = products.find(x => x.id == id);
+            const ex = cart.find(x => x.id == id);
+            if (ex) ex.qty++; else cart.push({...p, qty: 1});
+            renderCart();
+            toast(`«${p.name}» به سبد اضافه شد`);
+        }
+
+        document.addEventListener('click', e => {
+            const add = e.target.closest('.add-cart');
+            if (add) {
+                addToCart(add.dataset.id);
+                return
+            }
+            const qv = e.target.closest('.quick-view');
+            if (qv) {
+                openQuick(qv.dataset.id);
+                return
+            }
+            const q = e.target.closest('.qty button');
+            if (q) {
+                const it = cart.find(x => x.id == q.dataset.id);
+                if (q.dataset.op === '+') it.qty++; else it.qty--;
+                if (it.qty <= 0) cart.splice(cart.indexOf(it), 1);
+                renderCart();
+                return;
+            }
+            const rm = e.target.closest('.ci-remove');
+            if (rm) {
+                const i = cart.findIndex(x => x.id == rm.dataset.id);
+                cart.splice(i, 1);
+                renderCart()
+            }
+        });
+        renderCart();
+
+        /* =============== QUICK VIEW =============== */
+        const modal = document.getElementById('quickModal');
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalBody = document.getElementById('modalBody');
+
+        function openQuick(id) {
+            const p = products.find(x => x.id == id);
+            modalBody.innerHTML = `
+    <div class="qv-img"><img src="${p.img}" alt="${p.name}"/></div>
+    <div class="qv-info">
+      ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+      <h2>${p.name}</h2>
+      <div class="price">${p.old ? `<span class="old">${fmt(p.old)}</span>` : ''}<span class="new">${fmt(p.price)}</span></div>
+      <p class="qv-desc">پارچه ممتاز و دوخت اختصاصی BY SASH.CO. مناسب برای استفاده روزمره و مجالس. طراحی شده با الهام از ترندهای روز مد جهان.</p>
+      <div class="qv-row"><strong>سایز:</strong>
+        <div class="chips"><span>S</span><span class="on">M</span><span>L</span><span>XL</span></div>
+      </div>
+      <div class="qv-row"><strong>رنگ:</strong>
+        <div class="chips colors"><span style="background:#F5B301" class="on"></span><span style="background:#111"></span><span style="background:#fff;border:1px solid #ddd"></span><span style="background:#7a4b2a"></span></div>
+      </div>
+      <div class="qv-actions">
+        <button class="btn btn-mango btn-lg add-cart" data-id="${p.id}"><i class="fa-solid fa-bag-shopping"></i> افزودن به سبد خرید</button>
+        <button class="icon-btn round lg"><i class="fa-regular fa-heart"></i></button>
+      </div>
+    </div>`;
+            modal.classList.add('open');
+            modalBackdrop.classList.add('open');
+        }
+
+        function closeQuick() {
+            modal.classList.remove('open');
+            modalBackdrop.classList.remove('open')
+        }
+
+        document.getElementById('closeModal').onclick = closeQuick;
+        modalBackdrop.onclick = closeQuick;
+
+        /* =============== TOAST =============== */
+        let toastTimer;
+
+        function toast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+        }
+
+        /* =============== PWA =============== */
+        let deferredPrompt;
+        const pwaBtns = [document.getElementById('pwaInstallBtn'), document.getElementById('pwaInstallCta')];
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+            pwaBtns.forEach(b => b && (b.hidden = false));
+        });
+        pwaBtns.forEach(b => b && (b.onclick = async () => {
+            if (!deferredPrompt) {
+                toast('برای نصب، از منوی مرورگر گزینه «افزودن به صفحه اصلی» را انتخاب کنید');
+                return
+            }
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            pwaBtns.forEach(x => x && (x.hidden = true));
+        }));
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {
+            }));
+        }
+
+        /* =============== MOBILE MENU =============== */
+        document.querySelector('.menu-toggle').onclick = () => {
+            document.querySelector('.main-nav').classList.toggle('open');
+        };
+    </script>
+
+{% endblock %}
+
+

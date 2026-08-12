@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>تماس با ما | BY SASH.CO</title>
+<meta name="description" content="راه‌های ارتباطی با تولیدی پوشاک زنانه BY SASH.CO — تلفن، ایمیل، آدرس و فرم تماس." />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#F5B301" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">BY</span>
+      <span class="logo-text">SASH<em>.CO</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">خانه</a>
+      <a href="shop.html">فروشگاه</a>
+      <a href="categories.html">دسته‌بندی‌ها</a>
+      <a href="about.html">درباره ما</a>
+      <a href="contact.html" class="active">تماس با ما</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn cart-toggle" aria-label="سبد خرید">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
+        <i class="fa-solid fa-download"></i> نصب اپلیکیشن
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE BANNER -->
+<section class="page-banner">
+  <div class="container">
+    <div>
+      <nav class="breadcrumb">
+        <a href="index.html">خانه</a>
+        <i class="fa-solid fa-chevron-left"></i>
+        <span class="current">تماس با ما</span>
+      </nav>
+      <h1>در ارتباط باشیم</h1>
+      <p>پاسخگوی سوالات، درخواست همکاری عمده و پیشنهادات شما هستیم.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="container contact-wrap">
+
+    <div class="contact-info">
+      <h2>راه‌های ارتباطی</h2>
+      <p>هر روز آماده پاسخگویی به شما هستیم.</p>
+
+      <ul class="contact-list">
+        <li>
+          <div class="ci"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h5>تلفن تماس</h5>
+            <span>۰۲۱-۰۰۰۰۰۰۰۰ &nbsp;|&nbsp; ۰۹۱۲-۰۰۰۰۰۰۰</span>
+          </div>
+        </li>
+        <li>
+          <div class="ci"><i class="fa-regular fa-envelope"></i></div>
+          <div>
+            <h5>ایمیل</h5>
+            <span>info@bysash.co &nbsp;|&nbsp; wholesale@bysash.co</span>
+          </div>
+        </li>
+        <li>
+          <div class="ci"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h5>آدرس دفتر</h5>
+            <span>تهران، خیابان ولیعصر، پلاک ۰۰۰، طبقه ۳</span>
+          </div>
+        </li>
+        <li>
+          <div class="ci"><i class="fa-regular fa-clock"></i></div>
+          <div>
+            <h5>ساعات کاری</h5>
+            <span>شنبه تا چهارشنبه ۹ تا ۱۸ &nbsp;|&nbsp; پنج‌شنبه ۹ تا ۱۴</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="contact-socials">
+        <a href="#" aria-label="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="تلگرام"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" aria-label="واتس‌اپ"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <h3>ارسال پیام</h3>
+      <p class="lead">فرم زیر را پر کنید، در کمتر از ۲۴ ساعت پاسخ می‌دهیم.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>نام و نام خانوادگی</label>
+          <input type="text" name="name" required placeholder="مثلاً سارا محمدی" />
+        </div>
+        <div class="form-group">
+          <label>شماره تماس</label>
+          <input type="tel" name="phone" required placeholder="09xxxxxxxxx" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>ایمیل</label>
+        <input type="email" name="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label>موضوع درخواست</label>
+        <select name="subject">
+          <option>سوال درباره محصول</option>
+          <option>همکاری عمده (SOLOS / SwA)</option>
+          <option>سفارش اختصاصی</option>
+          <option>پیگیری سفارش</option>
+          <option>سایر موارد</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>پیام شما</label>
+        <textarea name="message" rows="5" required placeholder="پیام خود را اینجا بنویسید..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-mango btn-lg btn-block">ارسال پیام</button>
+      <p id="formOk" class="form-success">✅ پیام شما با موفقیت ثبت شد. به‌زودی با شما تماس می‌گیریم.</p>
+    </form>
+  </div>
+
+  <div class="container">
+    <div class="contact-map">
+      <iframe
+        title="نقشه"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=51.38%2C35.68%2C51.44%2C35.72&layer=mapnik"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="logo footer-logo"><span class="logo-mark">BY</span><span class="logo-text">SASH<em>.CO</em></span></div>
+      <p>پوشاک زنانه با طراحی مدرن و دوخت ممتاز. عمده‌فروشی برندهای SOLOS و SwA.</p>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>دسترسی سریع</h4>
+      <ul>
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="shop.html">فروشگاه</a></li>
+        <li><a href="categories.html">دسته‌بندی‌ها</a></li>
+        <li><a href="about.html">درباره ما</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>عمده‌فروشی</h4>
+      <ul>
+        <li><a href="shop.html?brand=solos">SOLOS</a></li>
+        <li><a href="shop.html?brand=swa">SwA</a></li>
+        <li><a href="contact.html">درخواست همکاری</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>ارتباط با ما</h4>
+      <p>۰۲۱-۰۰۰۰۰۰۰۰</p>
+      <p>info@bysash.co</p>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© ۲۰۲۶ BY SASH.CO — تمامی حقوق محفوظ است</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    try{
+      const cart = JSON.parse(localStorage.getItem('bysash_cart')||'[]');
+      const count = cart.reduce((s,i)=>s+(i.qty||1),0);
+      const el = document.getElementById('cartCount'); if(el) el.textContent = count;
+    }catch(e){}
+  })();
+
+  document.getElementById('contactForm')?.addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formOk').classList.add('show');
+    this.reset();
+  });
+
+  let deferredPrompt;
+  const installBtn = document.getElementById('pwaInstallBtn');
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt=e; if(installBtn) installBtn.hidden=false; });
+  installBtn?.addEventListener('click', async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt(); await deferredPrompt.userChoice;
+    deferredPrompt=null; installBtn.hidden=true;
+  });
+  if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+</script>
+</body>
+</html>

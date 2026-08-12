@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F5B301" />
+<meta name="description" content="جزئیات کامل محصول پوشاک زنانه BY SASH.CO — انتخاب رنگ، سایز و مشاهده مشخصات." />
+{% endblock %}
+
+{% block title %}
+    جزئیات محصول | BY SASH.CO
+{% endblock %}
+
+{% block extra_head %}
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ============ PRODUCT DETAIL ============ -->
+<section class="product-detail">
+  <div class="container">
+    <div class="pd-wrap" id="pdWrap">
+      <!-- injected -->
+    </div>
+
+    <!-- ============ TABS ============ -->
+    <div class="pd-tabs">
+      <div class="tab-heads">
+        <button class="on" data-tab="desc">توضیحات</button>
+        <button data-tab="spec">مشخصات</button>
+        <button data-tab="size">راهنمای سایز</button>
+        <button data-tab="review">نظرات (۳)</button>
+      </div>
+
+      <div class="tab-body on" id="tab-desc">
+        <p>این محصول از مجموعه <strong>BY SASH.CO</strong> با هدف ترکیب ظرافت ایرانی و استایل مدرن جهانی طراحی شده است. پارچه انتخاب‌شده کاملاً پوست‌دوست، ضدچروک و مناسب فصول مختلف است. دوخت دقیق، فرم عالی و جزئیات اختصاصی از جمله ویژگی‌های این محصول است.</p>
+        <p>این طرح می‌تواند به‌راحتی هم برای محیط اداری، هم برای مهمانی‌های نیمه‌رسمی و روزمره استفاده شود. توصیه می‌کنیم آن را با کفش پاشنه بلند و اکسسوری‌های مینیمال ست کنید.</p>
+        <ul style="padding-right:20px;line-height:2">
+          <li>طراحی و دوخت اختصاصی در ایران</li>
+          <li>پارچه ممتاز با کیفیت صادراتی</li>
+          <li>قابل شست‌وشو با ماشین لباس‌شویی (دور کند)</li>
+          <li>ضمانت اصالت و بازگشت کالا تا ۷ روز</li>
+        </ul>
+      </div>
+
+      <div class="tab-body" id="tab-spec">
+        <table class="spec-table">
+          <tr><td>برند</td><td>BY SASH.CO</td></tr>
+          <tr><td>جنس پارچه</td><td>کتان درجه یک با ترکیب ویسکوز</td></tr>
+          <tr><td>فرم</td><td>رگولار (استاندارد)</td></tr>
+          <tr><td>نوع یقه</td><td>گرد ساده</td></tr>
+          <tr><td>کشور سازنده</td><td>ایران</td></tr>
+          <tr><td>مناسب فصل</td><td>بهار، پاییز</td></tr>
+          <tr><td>الگو</td><td>ساده</td></tr>
+          <tr><td>گارانتی</td><td>۷ روز بازگشت وجه</td></tr>
+        </table>
+      </div>
+
+      <div class="tab-body" id="tab-size">
+        <table class="spec-table">
+          <tr><td><strong>سایز</strong></td><td><strong>دور سینه (cm)</strong></td></tr>
+          <tr><td>XS</td><td>۸۰ - ۸۴</td></tr>
+          <tr><td>S</td><td>۸۵ - ۸۹</td></tr>
+          <tr><td>M</td><td>۹۰ - ۹۴</td></tr>
+          <tr><td>L</td><td>۹۵ - ۹۹</td></tr>
+          <tr><td>XL</td><td>۱۰۰ - ۱۰۵</td></tr>
+          <tr><td>XXL</td><td>۱۰۶ - ۱۱۲</td></tr>
+        </table>
+      </div>
+
+      <div class="tab-body" id="tab-review">
+        <div class="review">
+          <div class="review-head"><strong>مریم ک.</strong><span class="stars">★★★★★</span></div>
+          <span class="review-date">۱۲ خرداد ۱۴۰۴</span>
+          <p>کیفیت پارچه فوق‌العاده بود، دقیقاً همون چیزی که تو عکس دیدم رسید. سایزبندی هم کاملاً درسته.</p>
+        </div>
+        <div class="review">
+          <div class="review-head"><strong>سارا ح.</strong><span class="stars">★★★★☆</span></div>
+          <span class="review-date">۵ خرداد ۱۴۰۴</span>
+          <p>خیلی خوش‌دوخت و شیک. رنگ مانگویی‌ش واقعاً چشمگیره. ارسال هم سریع بود.</p>
+        </div>
+        <div class="review">
+          <div class="review-head"><strong>نگار م.</strong><span class="stars">★★★★★</span></div>
+          <span class="review-date">۲۸ اردیبهشت ۱۴۰۴</span>
+          <p>برای سومین باره از BY SASH.CO خرید می‌کنم و همیشه راضی بودم.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ RELATED ============ -->
+    <h2 class="related-title">محصولات مرتبط</h2>
+    <div class="products-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+
+
+<!-- CART DRAWER -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3><i class="fa-solid fa-bag-shopping"></i> سبد خرید</h3>
+    <button class="icon-btn" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="cart-total"><span>جمع کل:</span><strong id="cartTotal">۰ تومان</strong></div>
+    <button class="btn btn-mango btn-block btn-lg">تکمیل خرید</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---- Data (same as shop) ---- */
+const PRODUCTS = [
+  {id:1, name:'مانتو کتان مانگو',       cat:'مانتو',   price:1450000, old:1800000, colors:[{n:'مانگویی',v:'#F5B301'},{n:'مشکی',v:'#111'},{n:'کرم',v:'#e8dcc4'}], sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80', badge:'جدید'},
+  {id:2, name:'شومیز حریر طلایی',        cat:'شومیز',   price:890000,  old:null,    colors:[{n:'مانگویی',v:'#F5B301'},{n:'سفید',v:'#fff'}], sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1564257577-4a1d5a6b8f68?w=800&q=80', badge:null},
+  {id:3, name:'پیراهن مجلسی زعفران',     cat:'پیراهن',  price:2100000, old:2500000, colors:[{n:'مانگویی',v:'#F5B301'},{n:'قهوه‌ای',v:'#7a4b2a'}], sizes:['M','L'],  img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80', badge:'-15%'},
+  {id:4, name:'شلوار بگ کتان',           cat:'شلوار',   price:780000,  old:null,    colors:[{n:'مشکی',v:'#111'},{n:'کرم',v:'#e8dcc4'},{n:'زیتونی',v:'#6b7a3a'}], sizes:['S','M','L','XL','XXL'], img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80', badge:null},
+  {id:5, name:'کت بلند مانگویی',         cat:'کت و ژاکت',price:2650000,old:null,    colors:[{n:'مانگویی',v:'#F5B301'},{n:'مشکی',v:'#111'}], sizes:['M','L','XL'],      img:'https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=800&q=80', badge:'ویژه'},
+  {id:6, name:'ست دو تکه SOLOS',         cat:'مانتو',   price:3200000, old:3900000, colors:[{n:'مشکی',v:'#111'},{n:'قهوه‌ای',v:'#7a4b2a'}], sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80', badge:'-20%'},
+  {id:7, name:'پیراهن روزمره SwA',       cat:'پیراهن',  price:650000,  old:null,    colors:[{n:'صورتی',v:'#f2b6c6'},{n:'سفید',v:'#fff'},{n:'کرم',v:'#e8dcc4'}], sizes:['XS','S','M'],      img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80', badge:null},
+  {id:8, name:'مانتو تابستانه سفید',     cat:'مانتو',   price:1180000, old:null,    colors:[{n:'سفید',v:'#fff'},{n:'مانگویی',v:'#F5B301'}], sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80', badge:'جدید'},
+];
+
+const fmt = n => n.toLocaleString('fa-IR') + ' تومان';
+const params = new URLSearchParams(location.search);
+const id = +params.get('id') || 1;
+const p = PRODUCTS.find(x=>x.id===id) || PRODUCTS[0];
+document.title = `${p.name} | BY SASH.CO`;
+
+/* Extra gallery images (fallback: same image reused) */
+const gallery = [
+  p.img,
+  p.img.replace('?w=800&q=80','?w=800&q=80&flip=h'),
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80'
+];
+
+/* ---- Render detail ---- */
+const savePct = p.old ? Math.round((1 - p.price/p.old)*100) : 0;
+document.getElementById('pdWrap').innerHTML = `
+  <div class="pd-gallery">
+    <div class="pd-thumbs" id="pdThumbs">
+      ${gallery.map((g,i)=>`<div class="pd-thumb ${i===0?'on':''}" data-src="${g}"><img src="${g}" alt="thumb"/></div>`).join('')}
+    </div>
+    <div class="pd-main-img">
+      ${p.badge?`<span class="badge">${p.badge}</span>`:''}
+      <img id="pdMainImg" src="${p.img}" alt="${p.name}"/>
+    </div>
+  </div>
+  <div class="pd-info">
+    <div class="breadcrumb">
+      <a href="index.html">خانه</a>
+      <i class="fa-solid fa-chevron-left"></i>
+      <a href="shop.html">فروشگاه</a>
+      <i class="fa-solid fa-chevron-left"></i>
+      <span class="current">${p.name}</span>
+    </div>
+    <span class="pd-brand">${p.cat} • BY SASH.CO</span>
+    <h1>${p.name}</h1>
+    <div class="pd-rating">
+      <span class="stars">★★★★★</span>
+      <span>(۴۸ نظر)</span>
+      <span>•</span>
+      <span style="color:var(--mango-600)"><i class="fa-solid fa-check-circle"></i> موجود در انبار</span>
+    </div>
+    <div class="pd-price">
+      <span class="new">${fmt(p.price)}</span>
+      ${p.old?`<span class="old">${fmt(p.old)}</span><span class="save">${savePct}٪ تخفیف</span>`:''}
+    </div>
+    <p class="pd-short">دوخت اختصاصی BY SASH.CO با پارچه ممتاز و طراحی مدرن. مناسب برای استفاده روزمره و مجالس نیمه‌رسمی.</p>
+
+    <div class="pd-option">
+      <div class="label"><span>رنگ: <span id="colorLabel">${p.colors[0].n}</span></span></div>
+      <div class="chips colors" id="colorChips">
+        ${p.colors.map((c,i)=>`<span class="${i===0?'on':''}" data-color="${c.n}" style="background:${c.v}${c.v==='#fff'?';border:1px solid #ddd':''}" title="${c.n}"></span>`).join('')}
+      </div>
+    </div>
+
+    <div class="pd-option">
+      <div class="label"><span>سایز: <span id="sizeLabel">${p.sizes[0]}</span></span><a href="#tab-size" onclick="document.querySelector('[data-tab=size]').click();return false;">راهنمای سایز</a></div>
+      <div class="chips" id="sizeChips">
+        ${p.sizes.map((s,i)=>`<span class="${i===0?'on':''}" data-size="${s}">${s}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="pd-actions">
+      <div class="pd-qty">
+        <button id="qMinus">−</button>
+        <span id="qVal">۱</span>
+        <button id="qPlus">+</button>
+      </div>
+      <button class="btn btn-mango btn-lg" id="addBtn"><i class="fa-solid fa-bag-shopping"></i> افزودن به سبد خرید</button>
+      <button class="icon-btn round lg" title="علاقه‌مندی"><i class="fa-regular fa-heart"></i></button>
+      <button class="icon-btn round lg" title="اشتراک‌گذاری"><i class="fa-solid fa-share-nodes"></i></button>
+    </div>
+
+    <ul class="pd-features">
+      <li><i class="fa-solid fa-truck-fast"></i> ارسال رایگان بالای ۲ میلیون</li>
+      <li><i class="fa-solid fa-rotate-left"></i> ۷ روز بازگشت وجه</li>
+      <li><i class="fa-solid fa-shield-halved"></i> ضمانت اصالت</li>
+      <li><i class="fa-solid fa-headset"></i> پشتیبانی ۲۴ ساعته</li>
+    </ul>
+  </div>
+`;
+
+/* Gallery thumbs */
+document.getElementById('pdThumbs').addEventListener('click', e=>{
+  const t = e.target.closest('.pd-thumb'); if(!t) return;
+  document.querySelectorAll('.pd-thumb').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');
+  document.getElementById('pdMainImg').src = t.dataset.src;
+});
+
+/* Options */
+document.getElementById('colorChips').addEventListener('click', e=>{
+  const s = e.target.closest('span'); if(!s) return;
+  document.querySelectorAll('#colorChips span').forEach(x=>x.classList.remove('on'));
+  s.classList.add('on');
+  document.getElementById('colorLabel').textContent = s.dataset.color;
+});
+document.getElementById('sizeChips').addEventListener('click', e=>{
+  const s = e.target.closest('span'); if(!s) return;
+  document.querySelectorAll('#sizeChips span').forEach(x=>x.classList.remove('on'));
+  s.classList.add('on');
+  document.getElementById('sizeLabel').textContent = s.dataset.size;
+});
+
+/* Qty */
+let qty = 1;
+const qVal = document.getElementById('qVal');
+const faNum = n => n.toString().replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+document.getElementById('qPlus').onclick = ()=>{qty++;qVal.textContent=faNum(qty)};
+document.getElementById('qMinus').onclick = ()=>{if(qty>1){qty--;qVal.textContent=faNum(qty)}};
+
+/* Tabs */
+document.querySelectorAll('.tab-heads button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('.tab-heads button').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.tab-body').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('tab-'+b.dataset.tab).classList.add('on');
+  };
+});
+
+/* Related */
+document.getElementById('relatedGrid').innerHTML = PRODUCTS.filter(x=>x.id!==p.id).slice(0,4).map(r=>`
+  <div class="product-card">
+    <div class="product-media">
+      ${r.badge?`<span class="badge">${r.badge}</span>`:''}
+      <a href="product.html?id=${r.id}"><img src="${r.img}" alt="${r.name}" loading="lazy"/></a>
+    </div>
+    <div class="product-info">
+      <span style="font-size:.75rem;color:var(--muted)">${r.cat}</span>
+      <h4><a href="product.html?id=${r.id}">${r.name}</a></h4>
+      <div class="price">
+        ${r.old?`<span class="old">${fmt(r.old)}</span>`:''}
+        <span class="new">${fmt(r.price)}</span>
+      </div>
+      <a href="product.html?id=${r.id}" class="btn btn-outline btn-block btn-sm">مشاهده محصول</a>
+    </div>
+  </div>`).join('');
+
+/* Cart (shared localStorage) */
+const cart = JSON.parse(localStorage.getItem('sash_cart')||'[]');
+const cartCount = document.getElementById('cartCount');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const drawer = document.getElementById('cartDrawer');
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+function saveCart(){localStorage.setItem('sash_cart',JSON.stringify(cart))}
+document.querySelector('.cart-toggle').onclick = ()=>{drawer.classList.add('open');drawerBackdrop.classList.add('open')};
+document.getElementById('closeCart').onclick = ()=>{drawer.classList.remove('open');drawerBackdrop.classList.remove('open')};
+drawerBackdrop.onclick = ()=>{drawer.classList.remove('open');drawerBackdrop.classList.remove('open')};
+
+function renderCart(){
+  cartCount.textContent = cart.reduce((s,i)=>s+i.qty,0);
+  if(!cart.length){cartItems.innerHTML='<p class="empty">سبد خرید شما خالی است</p>';cartTotal.textContent=fmt(0);return}
+  cartItems.innerHTML = cart.map(i=>`
+    <div class="cart-item">
+      <img src="${i.img}" alt=""/>
+      <div class="ci-info">
+        <h5>${i.name}</h5>
+        <span>${fmt(i.price)}</span>
+        <div class="qty">
+          <button data-id="${i.id}" data-op="-">−</button>
+          <span>${i.qty}</span>
+          <button data-id="${i.id}" data-op="+">+</button>
+        </div>
+      </div>
+      <button class="ci-remove" data-id="${i.id}"><i class="fa-solid fa-trash"></i></button>
+    </div>`).join('');
+  cartTotal.textContent = fmt(cart.reduce((s,i)=>s+i.price*i.qty,0));
+}
+document.getElementById('addBtn').onclick = ()=>{
+  const ex = cart.find(x=>x.id===p.id);
+  if(ex) ex.qty += qty; else cart.push({id:p.id,name:p.name,price:p.price,img:p.img,qty});
+  saveCart(); renderCart();
+  toast(`«${p.name}» به سبد اضافه شد`);
+};
+document.addEventListener('click', e=>{
+  const q = e.target.closest('.qty button');
+  if(q){
+    const it = cart.find(x=>x.id==q.dataset.id); if(!it) return;
+    if(q.dataset.op==='+') it.qty++; else it.qty--;
+    if(it.qty<=0) cart.splice(cart.indexOf(it),1);
+    saveCart(); renderCart();return;
+  }
+  const rm = e.target.closest('.ci-remove');
+  if(rm){const i=cart.findIndex(x=>x.id==rm.dataset.id);cart.splice(i,1);saveCart();renderCart()}
+});
+renderCart();
+
+/* Toast */
+let toastTimer;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+
+/* PWA */
+let deferredPrompt; const pwaBtn = document.getElementById('pwaInstallBtn');
+window.addEventListener('beforeinstallprompt', e=>{e.preventDefault();deferredPrompt=e;if(pwaBtn)pwaBtn.hidden=false});
+if(pwaBtn) pwaBtn.onclick = async()=>{
+  if(!deferredPrompt){toast('برای نصب، از منوی مرورگر «افزودن به صفحه اصلی» را انتخاب کنید');return}
+  deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; pwaBtn.hidden=true;
+};
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+document.querySelector('.menu-toggle').onclick = ()=> document.querySelector('.main-nav').classList.toggle('open');
+</script>
+
+{% endblock %}
