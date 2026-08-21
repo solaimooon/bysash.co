@@ -7,7 +7,7 @@ from .brand import Brand
 from .category import Category
 
 from store.choices import ProductStatus
-
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Product(SlugMixin, BaseModel):
     """
@@ -48,10 +48,7 @@ class Product(SlugMixin, BaseModel):
         verbose_name="توضیح کوتاه",
     )
 
-    description = models.TextField(
-        blank=True,
-        verbose_name="توضیحات",
-    )
+    description = CKEditor5Field('Text', config_name='extends')
 
     status = models.CharField(
         max_length=20,

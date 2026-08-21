@@ -1,7 +1,7 @@
 from django.db import models
 
 from core.models import BaseModel
-
+from store.choices import AttributeType
 
 class Attribute(BaseModel):
     """
@@ -17,6 +17,14 @@ class Attribute(BaseModel):
         unique=True,
         verbose_name="نام ویژگی",
     )
+
+    attribute_type = models.CharField(
+        max_length=20,
+        choices=AttributeType.choices,
+        default=AttributeType.OTHER,
+        verbose_name="نوع ویژگی",
+    )
+
 
     sort_order = models.PositiveIntegerField(
         default=0,

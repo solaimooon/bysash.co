@@ -8,3 +8,14 @@ class ProductStatus(models.TextChoices):
     PUBLISHED = "published", "منتشر شده"
 
     ARCHIVED = "archived", "آرشیو شده"
+
+
+class AttributeType(models.TextChoices):
+
+    COLOR = "color", "رنگ"
+
+    SIZE = "size", "سایز"
+
+    MATERIAL = "material", "جنس"
+
+    OTHER = "other", "سایر"

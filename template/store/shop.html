@@ -59,59 +59,187 @@
                 </button>
 
                 <div class="filter-block">
-                    <h4>دسته‌بندی <i class="fa-solid fa-chevron-down"></i></h4>
-                    <div class="filter-body">
-                        <div class="filter-list" id="filterCats"></div>
+                    <h4>دسته‌بندی</h4>
+
+                    <div
+                            id="filterCats"
+                            style="
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        "
+                    >
+
+                        {% for category in categories %}
+
+                            <a
+                                    href="{% url 'store:shop' %}?category={{ category.slug }}"
+                                    style="
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 42px;
+                    padding: 7px 0;
+                    margin: 0;
+                    color: inherit;
+                    text-decoration: none;
+                    direction: rtl;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                "
+                            >
+
+                                <!-- نام دسته -->
+                                <span
+                                        style="
+                        flex: 1;
+                        font-size: 0.9rem;
+                        line-height: 1.6;
+                        color: var(--text);
+                    "
+                                >
+                    {{ category.name }}
+                </span>
+
+                                <!-- تعداد محصولات -->
+                                <span
+                                        style="
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        width: 27px;
+                        height: 27px;
+                        min-width: 27px;
+
+                        margin-right: auto;
+
+                        border-radius: 50%;
+
+                        background: #faf9f6;
+                        color: #777;
+
+                        font-size: 0.7rem;
+                        line-height: 1;
+                    "
+                                >
+                    {{ category.products.count }}
+                </span>
+
+                            </a>
+
+                        {% empty %}
+
+                            <span
+                                    style="
+                    display: block;
+                    margin: 8px 0;
+                    color: #999;
+                    font-size: 0.8rem;
+                "
+                            >
+                دسته‌بندی‌ای وجود ندارد.
+            </span>
+
+                        {% endfor %}
+
                     </div>
                 </div>
 
                 <div class="filter-block">
-                    <h4>رنگ <i class="fa-solid fa-chevron-down"></i></h4>
-                    <div class="filter-body">
-                        <div class="filter-colors" id="filterColors"></div>
+                    <h4>برند</h4>
+
+                    <div
+                            id="filterBrands"
+                            style="
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        "
+                    >
+
+                        {% for brand in brands %}
+
+                            <a
+                                    href="{% url 'store:shop' %}?brand={{ brand.slug }}"
+                                    style="
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 42px;
+                    padding: 7px 0;
+                    margin: 0;
+                    color: inherit;
+                    text-decoration: none;
+                    direction: rtl;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                "
+                            >
+
+                                <!-- نام برند -->
+                                <span
+                                        style="
+                        flex: 1;
+                        font-size: 0.9rem;
+                        line-height: 1.6;
+                        color: var(--text);
+                    "
+                                >
+                    {{ brand.name }}
+                </span>
+
+                                <!-- تعداد محصولات برند -->
+                                <span
+                                        style="
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        width: 27px;
+                        height: 27px;
+                        min-width: 27px;
+
+                        margin-right: auto;
+
+                        border-radius: 50%;
+
+                        background: #faf9f6;
+                        color: #777;
+
+                        font-size: 0.7rem;
+                        line-height: 1;
+                    "
+                                >
+                    {{ brand.products.count }}
+                </span>
+
+                            </a>
+
+                        {% empty %}
+
+                            <span
+                                    style="
+                    display: block;
+                    margin: 8px 0;
+                    color: #999;
+                    font-size: 0.8rem;
+                "
+                            >
+                برندی وجود ندارد.
+            </span>
+
+                        {% endfor %}
+
                     </div>
                 </div>
 
-                <div class="filter-block">
-                    <h4>سایز <i class="fa-solid fa-chevron-down"></i></h4>
-                    <div class="filter-body">
-                        <div class="filter-sizes" id="filterSizes"></div>
-                    </div>
-                </div>
-
-                <div class="filter-block">
-                    <h4>بازه قیمت (تومان) <i class="fa-solid fa-chevron-down"></i></h4>
-                    <div class="filter-body">
-                        <div class="price-inputs">
-                            <input type="number" id="priceMin" placeholder="از"/>
-                            <span>—</span>
-                            <input type="number" id="priceMax" placeholder="تا"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-actions">
-                    <button class="btn btn-mango btn-sm" id="applyFilters">اعمال فیلتر</button>
-                    <button class="btn btn-outline btn-sm" id="clearFilters">حذف</button>
-                </div>
             </aside>
 
             <!-- Main -->
             <div>
                 <div class="shop-toolbar">
-                    <span class="result-count" id="resultCount">۰ محصول</span>
-                    <div class="toolbar-right">
-                        <select id="sortSelect" aria-label="مرتب‌سازی">
-                            <option value="new">جدیدترین</option>
-                            <option value="price-asc">ارزان‌ترین</option>
-                            <option value="price-desc">گران‌ترین</option>
-                            <option value="name">حروف الفبا</option>
-                        </select>
-                        <div class="view-toggle">
-                            <button data-view="grid" class="on" title="گرید"><i class="fa-solid fa-grip"></i></button>
-                            <button data-view="list" title="لیست"><i class="fa-solid fa-list"></i></button>
-                        </div>
-                    </div>
+                    <span class="result-count" id="resultCount">{{ page_obj.paginator.count }} محصول </span>
                 </div>
 
                 <div class="products-grid" id="productsGrid">
@@ -128,7 +256,7 @@
                                 {% endif %}
 
                                 {% if product.cover_image %}
-                                    <a href="">
+                                    <a href="{% url 'store:product-detail' slug=product.slug %}">
                                         <img
                                                 src="{{ product.cover_image.image.url }}"
                                                 alt="{{ product.cover_image.alt_text|default:product.name }}"
@@ -139,28 +267,22 @@
 
                                 <div class="product-actions">
 
-                                    <button
-                                            class="pa-btn quick-view"
-                                            data-id="{{ product.id }}"
-                                            title="نمایش سریع"
-                                    >
-                                        <i class="fa-regular fa-eye"></i>
-                                    </button>
+                                    {#                                    <button#}
+                                    {#                                            class="pa-btn quick-view"#}
+                                    {#                                            data-id="{{ product.id }}"#}
+                                    {#                                            title="نمایش سریع"#}
+                                    {#                                    >#}
+                                    {#                                        <i class="fa-regular fa-eye"></i>#}
+                                    {#                                    </button>#}
 
-                                    <button
-                                            class="pa-btn"
-                                            title="علاقه‌مندی"
-                                    >
-                                        <i class="fa-regular fa-heart"></i>
-                                    </button>
 
-                                    <button
-                                            class="pa-btn add-cart"
-                                            data-id="{{ product.id }}"
-                                            title="افزودن به سبد"
-                                    >
-                                        <i class="fa-solid fa-bag-shopping"></i>
-                                    </button>
+                                    {#                                    <button#}
+                                    {#                                            class="pa-btn add-cart"#}
+                                    {#                                            data-id="{{ product.id }}"#}
+                                    {#                                            title="افزودن به سبد"#}
+                                    {#                                    >#}
+                                    {#                                        <i class="fa-solid fa-bag-shopping"></i>#}
+                                    {#                                    </button>#}
 
                                 </div>
 
@@ -170,7 +292,7 @@
                             <div class="product-info">
 
                                 <h4>
-                                    <a href="">
+                                    <a href="{% url 'store:product-detail' slug=product.slug %}">
                                         {{ product.name }}
                                     </a>
                                 </h4>
@@ -264,81 +386,26 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        /* =============== DATA =============== */
-        const CATS = ['مانتو', 'شومیز', 'شلوار', 'پیراهن', 'کت و ژاکت', 'اکسسوری'];
-        const COLORS = [
-            {n: 'مانگویی', v: '#F5B301'}, {n: 'مشکی', v: '#111'}, {n: 'سفید', v: '#fff'},
-            {n: 'کرم', v: '#e8dcc4'}, {n: 'قهوه‌ای', v: '#7a4b2a'}, {n: 'زیتونی', v: '#6b7a3a'},
-            {n: 'صورتی', v: '#f2b6c6'}, {n: 'آبی', v: '#3a5f8a'}
-        ];
-        const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-        const PRODUCTS = [
-  {id:1, name:'مانتو کتان مانگو',       cat:'مانتو',   price:1450000, old:1800000, colors:['#F5B301','#111','#e8dcc4'], sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80', badge:'جدید', date:20},
-  {id:2, name:'شومیز حریر طلایی',        cat:'شومیز',   price:890000,  old:null,    colors:['#F5B301','#fff'],           sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1564257577-4a1d5a6b8f68?w=600&q=80', badge:null,  date:18},
-  {id:3, name:'پیراهن مجلسی زعفران',     cat:'پیراهن',  price:2100000, old:2500000, colors:['#F5B301','#7a4b2a'],        sizes:['M','L'],           img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80', badge:'-15%', date:19},
-  {id:4, name:'شلوار بگ کتان',           cat:'شلوار',   price:780000,  old:null,    colors:['#111','#e8dcc4','#6b7a3a'], sizes:['S','M','L','XL','XXL'], img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80', badge:null, date:15},
-  {id:5, name:'کت بلند مانگویی',         cat:'کت و ژاکت',price:2650000,old:null,    colors:['#F5B301','#111'],           sizes:['M','L','XL'],      img:'https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=600&q=80', badge:'ویژه',date:17},
-  {id:6, name:'ست دو تکه SOLOS',         cat:'مانتو',   price:3200000, old:3900000, colors:['#111','#7a4b2a'],           sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80', badge:'-20%',date:14},
-  {id:7, name:'پیراهن روزمره SwA',       cat:'پیراهن',  price:650000,  old:null,    colors:['#f2b6c6','#fff','#e8dcc4'], sizes:['XS','S','M'],      img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80', badge:null,  date:16},
-  {id:8, name:'مانتو تابستانه سفید',     cat:'مانتو',   price:1180000, old:null,    colors:['#fff','#F5B301'],           sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80', badge:'جدید',date:13},
-  {id:9, name:'شومیز ابریشمی صورتی',     cat:'شومیز',   price:1250000, old:1500000, colors:['#f2b6c6','#fff'],           sizes:['S','M'],           img:'https://images.unsplash.com/photo-1520006403909-838d6b92c22e?w=600&q=80', badge:'-16%',date:12},
-  {id:10,name:'شلوار پارچه‌ای زیتونی',   cat:'شلوار',   price:980000,  old:null,    colors:['#6b7a3a','#111'],           sizes:['M','L','XL'],      img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', badge:null,  date:11},
-  {id:11,name:'ژاکت بافت کرمی',          cat:'کت و ژاکت',price:1650000,old:null,   colors:['#e8dcc4','#7a4b2a'],        sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1544441893-675973e31985?w=600&q=80', badge:null,  date:10},
-  {id:12,name:'اکسسوری روسری ابریشم',    cat:'اکسسوری', price:420000,  old:520000,  colors:['#F5B301','#f2b6c6','#3a5f8a'], sizes:['XS'],           img:'https://images.unsplash.com/photo-1601924582971-df06e0ec4a03?w=600&q=80', badge:'-19%',date:9},
-  {id:13,name:'پیراهن مخمل مشکی',        cat:'پیراهن',  price:2450000, old:null,    colors:['#111'],                     sizes:['M','L','XL'],      img:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80', badge:'ویژه',date:8},
-  {id:14,name:'مانتو دو دکمه',            cat:'مانتو',   price:1750000, old:null,    colors:['#111','#e8dcc4'],          sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1550928431-ee0ec6db30d3?w=600&q=80', badge:null,  date:7},
-  {id:15,name:'شومیز کتان روزمره',       cat:'شومیز',   price:690000,  old:null,    colors:['#fff','#F5B301','#e8dcc4'], sizes:['S','M','L'],       img:'https://images.unsplash.com/photo-1485518882345-15568b007407?w=600&q=80', badge:null,  date:6},
-  {id:16,name:'کیف چرمی مانگویی',        cat:'اکسسوری', price:1350000, old:1700000, colors:['#F5B301','#7a4b2a','#111'], sizes:['XS'],              img:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80', badge:'-20%',date:5},
-  {id:17,name:'شلوار جین کلاسیک',        cat:'شلوار',   price:890000,  old:null,    colors:['#3a5f8a','#111'],           sizes:['S','M','L','XL','XXL'], img:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80', badge:null, date:4},
-  {id:18,name:'پیراهن آبی نیلی',         cat:'پیراهن',  price:1580000, old:null,    colors:['#3a5f8a','#fff'],           sizes:['M','L'],           img:'https://images.unsplash.com/photo-1596993100471-c3905dafa78e?w=600&q=80', badge:'جدید',date:3},
-  {id:19,name:'ژاکت مخمل قهوه‌ای',       cat:'کت و ژاکت',price:1980000,old:2400000, colors:['#7a4b2a'],                  sizes:['M','L','XL'],      img:'https://images.unsplash.com/photo-1548624313-0396c75e4b17?w=600&q=80', badge:'-17%',date:2},
-  {id:20,name:'مانتو کتان کرم',           cat:'مانتو',   price:1320000, old:null,    colors:['#e8dcc4','#F5B301'],       sizes:['S','M','L','XL'],  img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=80', badge:null,  date:1},
-];
+        const openFilter = document.getElementById("openFilter");
+        const closeFilter = document.getElementById("closeFilter");
+        const filterSidebar = document.getElementById("filterSidebar");
 
-        const fmt = n => n.toLocaleString('fa-IR') + ' تومان';
-        const faNum = n => n.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+        if (openFilter && filterSidebar) {
+            openFilter.addEventListener("click", () => {
+                filterSidebar.classList.add("open");
+                document.body.style.overflow = "hidden";
+            });
+        }
 
-        /* =============== FILTERS BUILD =============== */
-        const filterCats = document.getElementById('filterCats');
-        filterCats.innerHTML = CATS.map(c => {
-            const cnt = PRODUCTS.filter(p => p.cat === c).length;
-            return `<label><input type="checkbox" value="${c}" data-filter="cat"/> ${c} <span class="count">${faNum(cnt)}</span></label>`;
-        }).join('');
+        if (closeFilter && filterSidebar) {
+            closeFilter.addEventListener("click", () => {
+                filterSidebar.classList.remove("open");
+                document.body.style.overflow = "";
+            });
+        }
+    </script>
+    <script>
 
-        const filterColors = document.getElementById('filterColors');
-        filterColors.innerHTML = COLORS.map(c => `<span class="filter-color" style="background:${c.v}${c.v === '#fff' ? ';border:1px solid #ddd' : ''}" data-color="${c.v}" title="${c.n}"></span>`).join('');
-
-        const filterSizes = document.getElementById('filterSizes');
-        filterSizes.innerHTML = SIZES.map(s => `<span class="filter-size" data-size="${s}">${s}</span>`).join('');
-
-        /* Filter collapse */
-        document.querySelectorAll('.filter-block h4').forEach(h => {
-            h.onclick = () => h.parentElement.classList.toggle('collapsed');
-        });
-
-        /* Selected colors / sizes */
-        filterColors.addEventListener('click', e => {
-            const c = e.target.closest('.filter-color');
-            if (!c) return;
-            c.classList.toggle('on');
-            apply();
-        });
-        filterSizes.addEventListener('click', e => {
-            const c = e.target.closest('.filter-size');
-            if (!c) return;
-            c.classList.toggle('on');
-            apply();
-        });
-        filterCats.addEventListener('change', apply);
-        document.getElementById('applyFilters').onclick = apply;
-        document.getElementById('clearFilters').onclick = () => {
-            document.querySelectorAll('#filterCats input').forEach(i => i.checked = false);
-            document.querySelectorAll('.filter-color.on,.filter-size.on').forEach(e => e.classList.remove('on'));
-            document.getElementById('priceMin').value = '';
-            document.getElementById('priceMax').value = '';
-            apply();
-        };
-        document.getElementById('sortSelect').onchange = apply;
 
         /* =============== RENDER =============== */
         const PER_PAGE = 8;
@@ -386,9 +453,8 @@
         ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
         <a href="product.html?id=${p.id}"><img src="${p.img}" alt="${p.name}" loading="lazy"/></a>
         <div class="product-actions">
-          <button class="pa-btn quick-view" data-id="${p.id}" title="نمایش سریع"><i class="fa-regular fa-eye"></i></button>
-          <button class="pa-btn" title="علاقه‌مندی"><i class="fa-regular fa-heart"></i></button>
-          <button class="pa-btn add-cart" data-id="${p.id}" title="افزودن به سبد"><i class="fa-solid fa-bag-shopping"></i></button>
+          {#<button class="pa-btn quick-view" data-id="${p.id}" title="نمایش سریع"><i class="fa-regular fa-eye"></i></button>#}
+          {#<button class="pa-btn add-cart" data-id="${p.id}" title="افزودن به سبد"><i class="fa-solid fa-bag-shopping"></i></button>#}
         </div>
       </div>
       <div class="product-info">

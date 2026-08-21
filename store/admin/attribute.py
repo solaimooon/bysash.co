@@ -8,12 +8,19 @@ class AttributeAdmin(admin.ModelAdmin):
 
     list_display = (
         "name",
+        "attribute_type",
         "sort_order",
         "is_active",
     )
 
     list_editable = (
+        "attribute_type",
         "sort_order",
+        "is_active",
+    )
+
+    list_filter = (
+        "attribute_type",
         "is_active",
     )
 
@@ -24,4 +31,25 @@ class AttributeAdmin(admin.ModelAdmin):
     ordering = (
         "sort_order",
         "name",
+    )
+
+    fieldsets = (
+        (
+            "اطلاعات ویژگی",
+            {
+                "fields": (
+                    "name",
+                    "attribute_type",
+                )
+            },
+        ),
+        (
+            "تنظیمات نمایش",
+            {
+                "fields": (
+                    "sort_order",
+                    "is_active",
+                )
+            },
+        ),
     )
