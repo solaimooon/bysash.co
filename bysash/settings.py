@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os.path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +43,10 @@ INSTALLED_APPS = [
     "core",
     "mptt",
     "store",
+    'website',
+    "ai",
     'django_ckeditor_5',
+
 
 ]
 
@@ -243,3 +248,12 @@ CKEDITOR_5_CONFIGS = {
 }
 
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"  # Possible values: "staff", "authenticated", "any"
+
+
+# get the envoriment variable form .env
+load_dotenv()
+GAPGPT_API_KEY = os.getenv("GAPGPT_API_KEY")
+
+GAPGPT_BASE_URL = os.getenv(
+    "GAPGPT_BASE_URL"
+)

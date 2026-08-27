@@ -19,12 +19,12 @@ class Product(SlugMixin, BaseModel):
         verbose_name="نام محصول",
     )
 
-    slug = models.SlugField(
+    slug = models.CharField(
         max_length=255,
         unique=True,
         blank=True,
         verbose_name="اسلاگ",
-        help_text="این فیلد به صورت هوشمند توسط سیستم ثبت میشود(لازم نیست مقداری وارد نمایید)"
+        help_text="این فیلد به صورت اتوماتیک توسط سایت تکمیل میگردد (نیازی به وارد کردن مقداری نیست) "
     )
 
     categories = models.ManyToManyField(
