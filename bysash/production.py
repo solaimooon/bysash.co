@@ -21,3 +21,21 @@ DATABASES = {
         "PORT": config("DB_PORT"),
     }
 }
+
+ALLOWED_HOSTS = [
+    "bysash.co",
+    "www.bysash.co",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://bysash.co",
+    "https://www.bysash.co",
+]
+
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTO",
+    "https",
+)
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
