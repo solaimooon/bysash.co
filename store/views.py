@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, ListView,DetailView
 from store.services.product_service import ProductService
 from store.models import Category,Product,Brand
 from django.http import Http404
+from store.services.category_service import *
 
 
 
@@ -89,5 +90,21 @@ class ProductDetailView(DetailView):
                 self.object
             )
         )
+
+        return context
+
+
+
+
+
+
+
+class CategoryListView(TemplateView):
+    template_name = "store/categories.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["categories"] = CategoryService.get_categories_page()
 
         return context

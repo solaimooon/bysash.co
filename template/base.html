@@ -34,7 +34,7 @@
         </a>
         <nav class="main-nav">
             <a href="{% url 'website:home' %}">خانه</a>
-            <a href="#categories">دسته‌بندی</a>
+            <a href="{% url 'store:categories' %}">دسته‌بندی</a>
             <a href="{% url 'store:shop' %}">فروشگاه</a>
 
             {#      <a href="#blog">وبلاگ</a>#}
@@ -44,10 +44,10 @@
         <div class="header-actions">
             {#      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>#}
             <button class="icon-btn" aria-label="حساب کاربری"><i class="fa-regular fa-user"></i></button>
-            {#      <button class="icon-btn cart-toggle" aria-label="سبد خرید">#}
-            {#        <i class="fa-solid fa-bag-shopping"></i>#}
-            {#        <span class="cart-count" id="cartCount">0</span>#}
-            {#      </button>#}
+                  <button class="icon-btn cart-toggle" aria-label="سبد خرید">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                  </button>
             <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
                 <i class="fa-solid fa-download"></i> نصب اپلیکیشن
             </button>
@@ -88,7 +88,7 @@
             <h4>دسترسی سریع</h4>
             <ul>
                 <li><a href="{% url 'website:home' %}">خانه</a></li>
-                <li><a href="#categories">دسته‌بندی</a></li>
+                <li><a href="{% url 'store:categories' %}">دسته‌بندی</a></li>
                 <li><a href="{% url 'website:about' %}">درباره ما</a></li>
                 <li><a href="{% url 'website:contact' %}">تماس باما</a></li>
             </ul>
@@ -149,6 +149,7 @@
 
 {% block extra_js %}
 {% endblock %}
+<!-- script to install app by button of site -->
 <script>
     let deferredPrompt = null;
 
@@ -282,6 +283,14 @@
         hidePwaCta();
 
     });
+</script>
+
+<!-- script for MOBILE MENU that the hamberger menu open and close -->
+<script>
+    /* =============== MOBILE MENU =============== */
+document.querySelector('.menu-toggle').onclick = ()=>{
+  document.querySelector('.main-nav').classList.toggle('open');
+};
 </script>
 </body>
 </html>

@@ -32,7 +32,7 @@
     <div class="container">
         <div>
             <nav class="breadcrumb">
-                <a href="index.html">خانه</a>
+                <a href="{% url 'website:home' %}">خانه</a>
                 <i class="fa-solid fa-chevron-left"></i>
                 <span class="current">دسته‌بندی‌ها</span>
             </nav>
@@ -48,165 +48,45 @@
 
         <div class="cats-grid">
 
-            <a href="shop.html?cat=manto" class="cats-card wide tall">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?w=900&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>مانتو</h3>
-                        <div class="cats-count">۱۲۴ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
+            {% for category in categories %}
 
-            <a href="shop.html?cat=shomiz" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1551803091-e20673f15770?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>شومیز و بلوز</h3>
-                        <div class="cats-count">۸۶ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
+                <a href="{% url 'store:shop' %}?cat={{ category.slug }}"
+                   class="cats-card {% if forloop.first or forloop.counter == 5 %}wide tall{% endif %}">
 
-            <a href="shop.html?cat=shalvar" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>شلوار</h3>
-                        <div class="cats-count">۶۲ محصول</div>
+                    <div class="cats-img"
+                         style="background-image:url('{{ category.image.url }}')">
                     </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
 
-            <a href="shop.html?cat=daman" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1583496661160-fb5886a13d44?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>دامن</h3>
-                        <div class="cats-count">۳۴ محصول</div>
+                    <div class="cats-body">
+                        <div>
+                            <h3>{{ category.name }}</h3>
+
+                            <div class="cats-count">
+                                {{ category.product_count }} محصول
+                            </div>
+                        </div>
+
+                        <span class="cats-cta">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </span>
                     </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
 
-            <a href="shop.html?cat=majlesi" class="cats-card wide tall">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=900&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>لباس مجلسی</h3>
-                        <div class="cats-count">۴۸ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
-
-            <a href="shop.html?cat=set" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>ست دو تکه</h3>
-                        <div class="cats-count">۲۹ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
-
-            <a href="shop.html?cat=hejab" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1611601322175-ef8ec8c85f01?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>شال و روسری</h3>
-                        <div class="cats-count">۵۷ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
-
-            <a href="shop.html?cat=accessories" class="cats-card">
-                <div class="cats-img"
-                     style="background-image:url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&auto=format&fit=crop')"></div>
-                <div class="cats-body">
-                    <div>
-                        <h3>اکسسوری</h3>
-                        <div class="cats-count">۴۱ محصول</div>
-                    </div>
-                    <span class="cats-cta"><i class="fa-solid fa-arrow-left"></i></span>
-                </div>
-            </a>
-
-        </div>
-
-        <!-- Brand highlight -->
-        <div class="cats-brands">
-            <div class="section-head center">
-                <span class="eyebrow">عمده‌فروشی</span>
-                <h2>برندهای اختصاصی ما</h2>
-            </div>
-            <div class="brands-grid">
-                <a href="shop.html?brand=solos" class="brand-card brand-dark">
-                    <div class="brand-inner">
-                        <span class="brand-tag">WHOLESALE</span>
-                        <h3 class="brand-title">SOLOS</h3>
-                        <p>خط تولید کلاسیک و مینیمال با پارچه‌های درجه یک.</p>
-                        <span class="brand-cta">محصولات SOLOS <i class="fa-solid fa-arrow-left"></i></span>
-                    </div>
                 </a>
-                <a href="shop.html?brand=swa" class="brand-card brand-light">
-                    <div class="brand-inner">
-                        <span class="brand-tag">WHOLESALE</span>
-                        <h3 class="brand-title">SwA</h3>
-                        <p>کالکشن مدرن و ترند روز؛ مخصوص فروشگاه‌های به‌روز.</p>
-                        <span class="brand-cta">محصولات SwA <i class="fa-solid fa-arrow-left"></i></span>
-                    </div>
-                </a>
-            </div>
+
+            {% empty %}
+
+                <p>دسته‌بندی‌ای وجود ندارد.</p>
+
+            {% endfor %}
+
         </div>
 
     </div>
 </section>
 
-<script>
-    // Cart badge from localStorage
-    (function () {
-        try {
-            const cart = JSON.parse(localStorage.getItem('bysash_cart') || '[]');
-            const count = cart.reduce((s, i) => s + (i.qty || 1), 0);
-            const el = document.getElementById('cartCount');
-            if (el) el.textContent = count;
-        } catch (e) {
-        }
-    })();
 
-    // PWA install
-    let deferredPrompt;
-    const installBtn = document.getElementById('pwaInstallBtn');
-    window.addEventListener('beforeinstallprompt', e => {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (installBtn) installBtn.hidden = false;
-    });
-    installBtn?.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        installBtn.hidden = true;
-    });
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(() => {
-        });
-    }
-</script>
+
+
 
 {% endblock %}
 

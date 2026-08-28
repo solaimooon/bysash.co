@@ -11,4 +11,12 @@ path("",ProductListView.as_view(),name="shop",),
         ProductDetailView.as_view(),
         name="product-detail",
     ),
+
+    path(
+        "categories/",
+        CategoryListView.as_view(),
+        name="categories",
+    ),
+
+
 ]

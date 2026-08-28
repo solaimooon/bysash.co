@@ -25,7 +25,7 @@
         <div class="container">
             <div>
                 <nav class="breadcrumb">
-                    <a href="index.html">خانه</a>
+                    <a href="{% url 'website:home' %}">خانه</a>
                     <i class="fa-solid fa-chevron-left"></i>
                     <span class="current">درباره ما</span>
                 </nav>
@@ -125,7 +125,7 @@
                 <h2>دو خط تولید، یک استاندارد کیفیت</h2>
             </div>
             <div class="brands-grid">
-                <a href="shop.html?brand=solos" class="brand-card brand-dark">
+                <a href="{% url 'store:shop' %}?brand=SOLOS" class="brand-card brand-dark">
                     <div class="brand-inner">
                         <span class="brand-tag">WHOLESALE</span>
                         <h3 class="brand-title">SOLOS</h3>
@@ -133,7 +133,7 @@
                         <span class="brand-cta">محصولات SOLOS <i class="fa-solid fa-arrow-left"></i></span>
                     </div>
                 </a>
-                <a href="shop.html?brand=swa" class="brand-card brand-light">
+                <a href="{% url 'store:shop' %}?brand=SwA"  class="brand-card brand-light">
                     <div class="brand-inner">
                         <span class="brand-tag">WHOLESALE</span>
                         <h3 class="brand-title">SwA</h3>

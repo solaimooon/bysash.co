@@ -84,7 +84,6 @@
 
 
                 <!-- ==================== PRODUCT INFO ==================== -->
-
                 <div class="pd-info">
 
 
@@ -444,7 +443,6 @@
 
 
                 </div>
-
             </div>
             <div class="pd-tabs">
                 <div class="tab-heads">
@@ -697,8 +695,6 @@
                 discountPercentElement.style.display =
                     'none';
             }
-
-
 
 
             /*
@@ -962,6 +958,90 @@
             }))
         }
         document.querySelector('.menu-toggle').onclick = () => document.querySelector('.main-nav').classList.toggle('open');
+    </script>
+
+    <!-- loop gallery  -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const thumbs = document.querySelectorAll(".pd-thumb");
+            const mainImage = document.getElementById("pdMainImg");
+
+            if (!thumbs.length || !mainImage) {
+                return;
+            }
+
+            let currentIndex = 0;
+            let autoSlide;
+
+            const slideDuration = 4000; // هر 4 ثانیه
+
+            function showImage(index) {
+
+                currentIndex = index;
+
+                const thumb = thumbs[currentIndex];
+                const imageSrc = thumb.dataset.src;
+
+                if (!imageSrc) {
+                    return;
+                }
+
+                // تغییر تصویر اصلی
+                mainImage.src = imageSrc;
+
+                // تغییر thumbnail فعال
+                thumbs.forEach(item => {
+                    item.classList.remove("on");
+                });
+
+                thumb.classList.add("on");
+            }
+
+
+            function nextImage() {
+
+                currentIndex++;
+
+                if (currentIndex >= thumbs.length) {
+                    currentIndex = 0;
+                }
+
+                showImage(currentIndex);
+            }
+
+
+            function startAutoSlide() {
+
+                autoSlide = setInterval(nextImage, slideDuration);
+            }
+
+
+            function stopAutoSlide() {
+
+                clearInterval(autoSlide);
+            }
+
+
+            // کلیک روی thumbnail
+            thumbs.forEach((thumb, index) => {
+
+                thumb.addEventListener("click", function () {
+
+                    stopAutoSlide();
+
+                    showImage(index);
+
+                    startAutoSlide();
+                });
+
+            });
+
+
+            // شروع اسلاید خودکار
+            startAutoSlide();
+
+        });
     </script>
 
 {% endblock %}
