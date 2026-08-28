@@ -2,7 +2,6 @@ from django.db import models
 
 
 class HeroSlider(models.Model):
-
     title_small = models.CharField(
         max_length=100,
         verbose_name="عنوان کوچک",
@@ -70,3 +69,59 @@ class HeroSlider(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+
+class SubjectChoices(models.TextChoices):
+    PRODUCT_QUESTION = "product_question", "سوال درباره محصول"
+    WHOLESALE = "wholesale", "همکاری عمده (SOLOS / SwA)"
+    CUSTOM_ORDER = "custom_order", "سفارش اختصاصی"
+    ORDER_TRACKING = "order_tracking", "پیگیری سفارش"
+    OTHER = "other", "سایر موارد"
+
+
+class ContactMessage(models.Model):
+
+    full_name = models.CharField(
+        max_length=150,
+        verbose_name="نام و نام خانوادگی",
+    )
+
+    phone = models.CharField(
+        max_length=20,
+        verbose_name="شماره تماس",
+    )
+
+    email = models.EmailField(
+        blank=True,
+        verbose_name="ایمیل",
+    )
+
+    subject = models.CharField(
+        max_length=30,
+        choices=SubjectChoices.choices,
+        verbose_name="موضوع درخواست",
+    )
+
+    message = models.TextField(
+        verbose_name="پیام",
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="تاریخ ثبت",
+    )
+
+    is_read = models.BooleanField(
+        default=False,
+        verbose_name="خوانده شده",
+    )
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "پیام تماس"
+        verbose_name_plural = "پیام‌های تماس"
+
+    def __str__(self):
+        return f"{self.full_name} - {self.get_subject_display()}"

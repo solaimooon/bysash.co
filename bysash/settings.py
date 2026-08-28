@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "pwa",
     'accounts',
     "core",
     "mptt",
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'website',
     "ai",
     'django_ckeditor_5',
-
 
 ]
 
@@ -135,9 +135,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.User"
-
-
-
 
 # config for cke editor
 
@@ -249,7 +246,6 @@ CKEDITOR_5_CONFIGS = {
 
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"  # Possible values: "staff", "authenticated", "any"
 
-
 # get the envoriment variable form .env
 load_dotenv()
 GAPGPT_API_KEY = os.getenv("GAPGPT_API_KEY")
@@ -257,3 +253,28 @@ GAPGPT_API_KEY = os.getenv("GAPGPT_API_KEY")
 GAPGPT_BASE_URL = os.getenv(
     "GAPGPT_BASE_URL"
 )
+
+
+
+# setting for pwa
+
+PWA_APP_NAME = "bysash.co"
+PWA_APP_DESCRIPTION = "فروشگاه اینترنتی پوشاک زنانه"
+PWA_APP_THEME_COLOR = "#F9C129"
+PWA_APP_BACKGROUND_COLOR = "#F9C129"
+PWA_APP_DISPLAY = "standalone"
+PWA_APP_SCOPE = "/"
+PWA_APP_START_URL = "/"
+
+PWA_APP_ICONS = [
+    {
+        "src": "/static/pwa_image/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+    },
+    {
+        "src": "/static/pwa_image/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+    },
+]

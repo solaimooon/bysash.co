@@ -1,9 +1,9 @@
-
+{% load pwa %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
-
+    {% progressive_web_app_meta %}
     {% block meta %}
     {% endblock %}
     <title>
@@ -26,33 +26,34 @@
 <body>
 <!-- ============ HEADER ============ -->
 <header class="site-header">
-  <div class="container header-inner">
-    <a href="#" class="logo">
+    <div class="container header-inner">
+        <a href="{% url 'website:home' %}" class="logo">
 
-      <span class="logo-text">SASH<em>.CO</em></span>
-      <span class="logo-mark">BY</span>
-    </a>
-    <nav class="main-nav">
-      <a href="{% url 'website:home' %}">خانه</a>
-      <a href="#categories">دسته‌بندی</a>
-      <a href="{% url 'store:shop' %}">فروشگاه</a>
+            <span class="logo-text">SASH<em>.CO</em></span>
+            <span class="logo-mark">BY</span>
+        </a>
+        <nav class="main-nav">
+            <a href="{% url 'website:home' %}">خانه</a>
+            <a href="#categories">دسته‌بندی</a>
+            <a href="{% url 'store:shop' %}">فروشگاه</a>
 
-{#      <a href="#blog">وبلاگ</a>#}
-      <a href="{% url 'website:contact' %}">تماس</a>
-    </nav>
-    <div class="header-actions">
-{#      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>#}
-      <button class="icon-btn" aria-label="حساب کاربری"><i class="fa-regular fa-user"></i></button>
-{#      <button class="icon-btn cart-toggle" aria-label="سبد خرید">#}
-{#        <i class="fa-solid fa-bag-shopping"></i>#}
-{#        <span class="cart-count" id="cartCount">0</span>#}
-{#      </button>#}
-      <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
-        <i class="fa-solid fa-download"></i> نصب اپلیکیشن
-      </button>
-      <button class="icon-btn menu-toggle" aria-label="منو"><i class="fa-solid fa-bars"></i></button>
+            {#      <a href="#blog">وبلاگ</a>#}
+            <a href="{% url 'website:contact' %}">تماس</a>
+            <a href="{% url 'website:about' %}">درباره ما</a>
+        </nav>
+        <div class="header-actions">
+            {#      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>#}
+            <button class="icon-btn" aria-label="حساب کاربری"><i class="fa-regular fa-user"></i></button>
+            {#      <button class="icon-btn cart-toggle" aria-label="سبد خرید">#}
+            {#        <i class="fa-solid fa-bag-shopping"></i>#}
+            {#        <span class="cart-count" id="cartCount">0</span>#}
+            {#      </button>#}
+            <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
+                <i class="fa-solid fa-download"></i> نصب اپلیکیشن
+            </button>
+            <button class="icon-btn menu-toggle" aria-label="منو"><i class="fa-solid fa-bars"></i></button>
+        </div>
     </div>
-  </div>
 </header>
 
 
@@ -77,8 +78,8 @@
 
             <div class="socials">
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://t.me/+Edz3jMPm0pFkYTlk"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://chat.whatsapp.com/ClYB0SMpetdFMaZBjX1L93?s=cl&p=i&ilr=0&amv=1"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
 
@@ -103,20 +104,20 @@
                     تهران، میدان هفت تیر، پاساژ مادر بلوک B طبقه سوم واحد ۳۳
                 </li>
 
-{#                <li>#}
-{#                    <i class="fa-solid fa-phone"></i>#}
-{#                    <a href="tel:02112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>#}
-{#                </li>#}
+                {#                <li>#}
+                {#                    <i class="fa-solid fa-phone"></i>#}
+                {#                    <a href="tel:02112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>#}
+                {#                </li>#}
 
                 <li>
                     <i class="fa-solid fa-mobile-screen"></i>
                     <a href="tel:09122233033">09122233033</a>
                 </li>
 
-{#                <li>#}
-{#                    <i class="fa-solid fa-envelope"></i>#}
-{#                    <a href="mailto:info@bysash.co">info@bysash.co</a>#}
-{#                </li>#}
+                {#                <li>#}
+                {#                    <i class="fa-solid fa-envelope"></i>#}
+                {#                    <a href="mailto:info@bysash.co">info@bysash.co</a>#}
+                {#                </li>#}
             </ul>
         </div>
 
@@ -148,7 +149,139 @@
 
 {% block extra_js %}
 {% endblock %}
+<script>
+    let deferredPrompt = null;
+
+    const installCta = document.getElementById("pwaInstallCta");
+    const installBtn = document.getElementById("pwaInstallBtn");
+    const pwaCta = document.getElementById("pwaCta");
 
 
+    // ==========================================
+    // مخفی کردن بخش CTA
+    // ==========================================
+
+    function hidePwaCta() {
+        if (pwaCta) {
+            pwaCta.remove();
+        }
+    }
+
+
+    // ==========================================
+    // مخفی کردن دکمه‌های نصب
+    // ==========================================
+
+    function hideInstallButtons() {
+
+        if (installCta) {
+            installCta.remove();
+        }
+
+        if (installBtn) {
+            installBtn.remove();
+        }
+    }
+
+    // ==========================================
+    // نمایش دکمه‌های نصب
+    // ==========================================
+
+    function showInstallButtons() {
+
+        if (installCta) {
+            installCta.hidden = false;
+        }
+
+        if (installBtn) {
+            installBtn.hidden = false;
+        }
+    }
+
+
+    // ==========================================
+    // PWA Install Prompt
+    // ==========================================
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+
+        // جلوگیری از نمایش خودکار مرورگر
+        event.preventDefault();
+
+        deferredPrompt = event;
+
+        // حالا PWA قابل نصب است
+        showInstallButtons();
+
+    });
+
+
+    // ==========================================
+    // تابع مشترک نصب
+    // ==========================================
+
+    async function installPwa() {
+
+        if (!deferredPrompt) {
+            return;
+        }
+
+        // نمایش پنجره نصب
+        deferredPrompt.prompt();
+
+        // نتیجه انتخاب کاربر
+        const {outcome} = await deferredPrompt.userChoice;
+
+        console.log("PWA install result:", outcome);
+
+        // این prompt فقط یک بار قابل استفاده است
+        deferredPrompt = null;
+
+        // اگر کاربر نصب کرد یا رد کرد،
+        // دیگر این prompt قابل استفاده نیست
+        hideInstallButtons();
+    }
+
+
+    // ==========================================
+    // دکمه CTA
+    // ==========================================
+
+    if (installCta) {
+
+        installCta.addEventListener("click", installPwa);
+
+    }
+
+
+    // ==========================================
+    // دکمه Header
+    // ==========================================
+
+    if (installBtn) {
+
+        installBtn.addEventListener("click", installPwa);
+
+    }
+
+
+    // ==========================================
+    // نصب موفقیت‌آمیز
+    // ==========================================
+
+    window.addEventListener("appinstalled", () => {
+
+        console.log("PWA installed successfully");
+
+        deferredPrompt = null;
+
+        // حذف دکمه‌های نصب
+        hideInstallButtons();
+
+        // حذف کل بخش CTA
+        hidePwaCta();
+
+    });
+</script>
 </body>
 </html>

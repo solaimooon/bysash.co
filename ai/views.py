@@ -1,11 +1,11 @@
+
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 
+from ai.models import AIImagePrompt
 from store.models import ProductImage
 
-from .services.product_image_service import (
-    ProductImageAIService,
-)
+from .services.product_image_service import ProductImageAIService
 
 
 def edit_product_image_with_ai(request, image_id):
@@ -15,28 +15,29 @@ def edit_product_image_with_ai(request, image_id):
         pk=image_id,
     )
 
-    prompt = """
-    Edit this product photo for a professional fashion e-commerce store.
-
-    Keep the clothing product itself unchanged.
-
-    Remove the existing background and replace it with
-    a clean, premium, minimal studio background.
-
-    Improve lighting and image quality while keeping
-    the original product appearance realistic.
-
-    Do not change the color, shape, design, or details
-    of the clothing.
-    """
-
     try:
+
+        # دریافت پرامپت فعال
+        active_prompt = AIImagePrompt.objects.filter(
+            is_active=True
+        ).first()
+
+        if not active_prompt:
+            messages.error(
+                request,
+                "هیچ پرامپت فعالی برای ویرایش تصویر تنظیم نشده است.",
+            )
+
+            return redirect(
+                "admin:store_product_change",
+                product_image.product.id,
+            )
 
         service = ProductImageAIService()
 
         new_image = service.edit_product_image(
             product_image=product_image,
-            prompt=prompt,
+            prompt=active_prompt.prompt,
         )
 
         messages.success(
@@ -60,3 +61,5 @@ def edit_product_image_with_ai(request, image_id):
             "admin:store_product_change",
             product_image.product.id,
         )
+
+

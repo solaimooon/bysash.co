@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% load store_tags %}
 {% block meta %}
@@ -29,37 +30,63 @@
     <!-- ============ HERO SLIDER ============ -->
     <section id="hero" class="hero-slider">
         <div class="slides">
-            <div class="slide active"
-                 style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80')">
-                <div class="container slide-content">
-                    <span class="eyebrow">مجموعه جدید ۱۴۰۴</span>
-                    <h1>ظرافت را در هر جزئیات <br/>تجربه کنید</h1>
-                    <p>پوشاک زنانه مدرن، دوخت ممتاز و طراحی اختصاصی</p>
-                    <a href="#bestselling" class="btn btn-mango">مشاهده کالکشن</a>
+
+            {% for slider in sliders %}
+
+                <div class="slide {% if forloop.first %}active{% endif %}"
+                     style="background-image: url('{{ slider.desktop_image.url }}');">
+
+                    <div class="container slide-content">
+
+                        {% if slider.title_small %}
+                            <span class="eyebrow">
+                            {{ slider.title_small }}
+                        </span>
+                        {% endif %}
+
+                        <h1>
+                            {{ slider.title }}
+                        </h1>
+
+                        {% if slider.description %}
+                            <p>
+                                {{ slider.description }}
+                            </p>
+                        {% endif %}
+
+                        {% if slider.button_text and slider.button_url %}
+                            <a href="{{ slider.button_url }}"
+                               class="btn btn-mango">
+                                {{ slider.button_text }}
+                            </a>
+                        {% endif %}
+
+                    </div>
                 </div>
-            </div>
-            <div class="slide"
-                 style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80')">
-                <div class="container slide-content">
-                    <span class="eyebrow">تخفیف ویژه</span>
-                    <h1>تا ۴۰٪ تخفیف <br/>روی محصولات منتخب</h1>
-                    <p>فرصت محدود برای خرید بهترین‌ها</p>
-                    <a href="#categories" class="btn btn-mango">شروع خرید</a>
-                </div>
-            </div>
-            <div class="slide"
-                 style="background-image:url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80')">
-                <div class="container slide-content">
-                    <span class="eyebrow">عمده‌فروشی</span>
-                    <h1>همکاری با برندهای <br/>SOLOS و SwA</h1>
-                    <p>شرایط ویژه برای همکاران و فروشندگان</p>
-                    <a href="#brands" class="btn btn-mango">اطلاعات بیشتر</a>
-                </div>
-            </div>
+
+            {% endfor %}
+
         </div>
-        <button class="slider-arrow prev" id="heroPrev"><i class="fa-solid fa-chevron-right"></i></button>
-        <button class="slider-arrow next" id="heroNext"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="slider-dots" id="heroDots"></div>
+
+        {% if sliders|length > 1 %}
+
+            <button class="slider-arrow prev"
+                    id="heroPrev"
+                    type="button">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button class="slider-arrow next"
+                    id="heroNext"
+                    type="button">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="slider-dots"
+                 id="heroDots">
+            </div>
+
+        {% endif %}
     </section>
 
     <!-- ============ CATEGORIES ============ -->
@@ -128,29 +155,28 @@
                                 {% endif %}
 
                                 <a href="{% url 'store:product-detail' product.slug %}">
-                                {% if product.cover_image %}
-                                    <img src="{{ product.cover_image.image.url }}"
-                                         alt="{{ product.cover_image.alt_text|default:product.name }}"
-                                         loading="lazy">
-                                {% endif %}
+                                    {% if product.cover_image %}
+                                        <img src="{{ product.cover_image.image.url }}"
+                                             alt="{{ product.cover_image.alt_text|default:product.name }}"
+                                             loading="lazy">
+                                    {% endif %}
 
-                                <div class="product-actions">
+                                    <div class="product-actions">
 
-{#                                    <button class="pa-btn quick-view"#}
-{#                                            data-id="{{ product.id }}"#}
-{#                                            title="نمایش سریع">#}
-{#                                        <i class="fa-regular fa-eye"></i>#}
-{#                                    </button>#}
+                                        {#                                    <button class="pa-btn quick-view"#}
+                                        {#                                            data-id="{{ product.id }}"#}
+                                        {#                                            title="نمایش سریع">#}
+                                        {#                                        <i class="fa-regular fa-eye"></i>#}
+                                        {#                                    </button>#}
 
 
+                                        {#                                    <button class="pa-btn add-cart"#}
+                                        {#                                            data-id="{{ product.id }}"#}
+                                        {#                                            title="افزودن به سبد">#}
+                                        {#                                        <i class="fa-solid fa-bag-shopping"></i>#}
+                                        {#                                    </button>#}
 
-{#                                    <button class="pa-btn add-cart"#}
-{#                                            data-id="{{ product.id }}"#}
-{#                                            title="افزودن به سبد">#}
-{#                                        <i class="fa-solid fa-bag-shopping"></i>#}
-{#                                    </button>#}
-
-                                </div>
+                                    </div>
 
                             </div>
 
@@ -283,7 +309,7 @@
     </section>
 
     <!-- ============ PWA CTA ============ -->
-    <section class="section pwa-cta">
+    <section class="section pwa-cta" id="pwaCta">
         <div class="container pwa-cta-inner">
             <div>
                 <h2>اپلیکیشن BY SASH.CO را نصب کنید</h2>
@@ -532,34 +558,10 @@
             toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
         }
 
-        /* =============== PWA =============== */
-        let deferredPrompt;
-        const pwaBtns = [document.getElementById('pwaInstallBtn'), document.getElementById('pwaInstallCta')];
-        window.addEventListener('beforeinstallprompt', e => {
-            e.preventDefault();
-            deferredPrompt = e;
-            pwaBtns.forEach(b => b && (b.hidden = false));
-        });
-        pwaBtns.forEach(b => b && (b.onclick = async () => {
-            if (!deferredPrompt) {
-                toast('برای نصب، از منوی مرورگر گزینه «افزودن به صفحه اصلی» را انتخاب کنید');
-                return
-            }
-            deferredPrompt.prompt();
-            await deferredPrompt.userChoice;
-            deferredPrompt = null;
-            pwaBtns.forEach(x => x && (x.hidden = true));
-        }));
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {
-            }));
-        }
 
-        /* =============== MOBILE MENU =============== */
-        document.querySelector('.menu-toggle').onclick = () => {
-            document.querySelector('.main-nav').classList.toggle('open');
-        };
     </script>
+
+
 
 {% endblock %}
 
