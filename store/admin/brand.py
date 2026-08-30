@@ -1,10 +1,10 @@
 from django.contrib import admin
-
+from unfold.admin import ModelAdmin
 from store.models import Brand
 
 
 @admin.register(Brand)
-class BrandAdmin(admin.ModelAdmin):
+class BrandAdmin(ModelAdmin):
 
     list_display = (
         "name",

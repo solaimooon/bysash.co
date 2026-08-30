@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 from .models import AIImagePrompt
-
+from unfold.admin import ModelAdmin
 
 @admin.register(AIImagePrompt)
-class AIImagePromptAdmin(admin.ModelAdmin):
+class AIImagePromptAdmin(ModelAdmin):
 
     list_display = (
         "id",
@@ -47,3 +47,6 @@ class AIImagePromptAdmin(admin.ModelAdmin):
             form,
             change,
         )
+
+    def has_add_permission(self, request):
+        return True

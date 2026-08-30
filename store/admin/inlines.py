@@ -1,21 +1,17 @@
 from django.contrib import admin
-
-from store.models import ProductImage
-from django.utils.html import format_html
-
-from django.contrib import admin
-from django.utils.html import format_html
-
-from store.models import ProductImage
 from django.urls import reverse
-
-from django.contrib import admin
 from django.utils.html import format_html
 
-from store.models import ProductImage
+from unfold.admin import TabularInline
+
+from store.models import (
+    ProductImage,
+    Variant,
+    VariantAttribute,
+)
 
 
-class ProductImageInline(admin.TabularInline):
+class ProductImageInline(TabularInline):
 
     model = ProductImage
 
@@ -49,15 +45,13 @@ class ProductImageInline(admin.TabularInline):
 
         return format_html(
             '<a class="button" href="{}">'
-            '🤖 ویرایش با هوش مصنوعی'
-            '</a>',
+            "🤖 ویرایش با هوش مصنوعی"
+            "</a>",
             url,
         )
 
-from store.models import Variant
 
-
-class VariantInline(admin.TabularInline):
+class VariantInline(TabularInline):
 
     model = Variant
 
@@ -75,11 +69,8 @@ class VariantInline(admin.TabularInline):
     show_change_link = True
 
 
+class VariantAttributeInline(TabularInline):
 
-from store.models import VariantAttribute
-
-
-class VariantAttributeInline(admin.TabularInline):
     model = VariantAttribute
 
     extra = 1

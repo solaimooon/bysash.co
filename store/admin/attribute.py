@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 from store.models import Attribute
-
+from unfold.admin import ModelAdmin
 
 @admin.register(Attribute)
-class AttributeAdmin(admin.ModelAdmin):
+class AttributeAdmin(ModelAdmin):
 
     list_display = (
         "name",

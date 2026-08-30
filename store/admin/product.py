@@ -1,19 +1,24 @@
 from django.contrib import admin
 from django.utils.html import format_html
+
+from unfold.admin import ModelAdmin
+
 from store.models import Product
+
 from .inlines import (
     ProductImageInline,
     VariantInline,
 )
 
+
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdmin):
+
     list_display = (
         "name",
         "brand",
         "status_badge",
         "is_active",
-
         "variant_count",
         "cover_image_preview",
         "created_at",
@@ -33,7 +38,8 @@ class ProductAdmin(admin.ModelAdmin):
 
         if cover and cover.image:
             return format_html(
-                '<img src="{}" width="60" height="60" style="border-radius:8px; object-fit:cover;" />',
+                '<img src="{}" width="60" height="60" '
+                'style="border-radius:8px; object-fit:cover;" />',
                 cover.image.url,
             )
 
@@ -80,7 +86,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "slug",
                     "brand",
                     "categories",
-                )
+                ),
             },
         ),
         (
@@ -89,7 +95,7 @@ class ProductAdmin(admin.ModelAdmin):
                 "fields": (
                     "short_description",
                     "description",
-                )
+                ),
             },
         ),
         (
@@ -99,7 +105,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "status",
                     "is_active",
                     "is_featured",
-                )
+                ),
             },
         ),
         (
@@ -108,7 +114,7 @@ class ProductAdmin(admin.ModelAdmin):
                 "fields": (
                     "created_at",
                     "updated_at",
-                )
+                ),
             },
         ),
     )

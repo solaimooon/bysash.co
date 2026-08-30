@@ -1,12 +1,13 @@
 from django.contrib import admin
 
 from mptt.admin import DraggableMPTTAdmin
+from unfold.admin import ModelAdmin
 
 from store.models import Category
 
 
 @admin.register(Category)
-class CategoryAdmin(DraggableMPTTAdmin):
+class CategoryAdmin(ModelAdmin, DraggableMPTTAdmin):
 
     list_display = (
         "tree_actions",

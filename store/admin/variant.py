@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
+from unfold.admin import ModelAdmin
+
 from store.models import Variant
+
 from .inlines import VariantAttributeInline
 
 
 @admin.register(Variant)
-class VariantAdmin(admin.ModelAdmin):
+class VariantAdmin(ModelAdmin):
 
     list_display = (
         "sku",
@@ -73,7 +76,7 @@ class VariantAdmin(admin.ModelAdmin):
                 "fields": (
                     "product",
                     "sku",
-                )
+                ),
             },
         ),
         (
@@ -82,7 +85,7 @@ class VariantAdmin(admin.ModelAdmin):
                 "fields": (
                     "price",
                     "discount_price",
-                )
+                ),
             },
         ),
         (
@@ -90,7 +93,7 @@ class VariantAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "stock",
-                )
+                ),
             },
         ),
         (
@@ -99,7 +102,7 @@ class VariantAdmin(admin.ModelAdmin):
                 "fields": (
                     "is_default",
                     "is_active",
-                )
+                ),
             },
         ),
         (
@@ -108,13 +111,14 @@ class VariantAdmin(admin.ModelAdmin):
                 "fields": (
                     "created_at",
                     "updated_at",
-                )
+                ),
             },
         ),
     )
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
+
         return queryset.select_related(
             "product",
         ).prefetch_related(

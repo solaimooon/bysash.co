@@ -1,4 +1,4 @@
-from django.contrib import admin
+from unfold.admin import ModelAdmin
 
 from django.contrib import admin
 
@@ -6,7 +6,7 @@ from .models import HeroSlider
 
 
 @admin.register(HeroSlider)
-class HeroSliderAdmin(admin.ModelAdmin):
+class HeroSliderAdmin(ModelAdmin):
 
     list_display = (
         "title",
@@ -40,7 +40,7 @@ from .models import ContactMessage
 
 
 @admin.register(ContactMessage)
-class ContactMessageAdmin(admin.ModelAdmin):
+class ContactMessageAdmin(ModelAdmin):
 
     list_display = (
         "full_name",

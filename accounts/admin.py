@@ -1,13 +1,12 @@
 from django.contrib import admin
-
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from unfold.admin import ModelAdmin
 
 from .models import User
 
 
 @admin.register(User)
-class MyUserAdmin(UserAdmin):
+class MyUserAdmin(ModelAdmin, UserAdmin):
 
     ordering = ("id",)
 
@@ -22,44 +21,59 @@ class MyUserAdmin(UserAdmin):
     )
 
     fieldsets = (
-        (None, {
-            "fields": (
-                "phone_number",
-                "password",
-            )
-        }),
+        (
+            None,
+            {
+                "fields": (
+                    "phone_number",
+                    "password",
+                )
+            },
+        ),
 
-        ("اطلاعات شخصی", {
-            "fields": (
-                "first_name",
-                "last_name",
-                "email",
-            )
-        }),
+        (
+            "اطلاعات شخصی",
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                    "email",
+                )
+            },
+        ),
 
-        ("سطح دسترسی", {
-            "fields": (
-                "user_type",
-                "is_active",
-                "is_staff",
-                "is_superuser",
-                "groups",
-                "user_permissions",
-            )
-        }),
+        (
+            "سطح دسترسی",
+            {
+                "fields": (
+                    "user_type",
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                )
+            },
+        ),
 
-        ("وضعیت", {
-            "fields": (
-                "is_phone_verified",
-            )
-        }),
+        (
+            "وضعیت",
+            {
+                "fields": (
+                    "is_phone_verified",
+                )
+            },
+        ),
 
-        ("تاریخ‌ها", {
-            "fields": (
-                "last_login",
-                "date_joined",
-            )
-        }),
+        (
+            "تاریخ‌ها",
+            {
+                "fields": (
+                    "last_login",
+                    "date_joined",
+                )
+            },
+        ),
     )
 
     add_fieldsets = (
