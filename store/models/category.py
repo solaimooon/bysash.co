@@ -33,8 +33,6 @@ class Category(SlugMixin, MPTTModel, BaseModel):
 
     image = models.ImageField(
         upload_to=UploadToPath("category"),
-        blank=True,
-        null=True,
     )
 
     parent = TreeForeignKey(
