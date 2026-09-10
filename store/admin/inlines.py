@@ -78,3 +78,4 @@ class VariantAttributeInline(TabularInline):
     autocomplete_fields = (
         "attribute_value",
     )
+
