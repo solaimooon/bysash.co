@@ -6,13 +6,142 @@
     {% progressive_web_app_meta %}
     {% block meta %}
     {% endblock %}
-    <meta name="enamad" content="77139800" />
+    <meta name="enamad" content="77139800"/>
     <title>
         {% block title %}
             بای ساش
         {% endblock %}
     </title>
 
+    <style>
+        /* =========================================
+       FOOTER SIGNATURE
+    ========================================= */
+
+        .footer-signature {
+            position: relative;
+
+            width: 100%;
+
+            min-height: 300px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            gap: 8vw;
+
+            padding: 100px 30px 55px;
+
+            /*
+             * هیچ backgroundای تعریف نمی‌کنیم
+             * تا دقیقاً بک‌گراند خود فوتر باقی بماند
+             */
+            background: inherit;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           اسم‌ها
+        ========================================= */
+
+        .signature-name {
+
+            display: inline-block;
+
+            color: #fff;
+
+            font-family: "Brush Script MT",
+            "Segoe Script",
+            cursive;
+
+            font-size: clamp(
+                    90px,
+                    12vw,
+                    190px
+            );
+
+            font-weight: 400;
+
+            line-height: .75;
+
+            white-space: nowrap;
+
+            /*
+             * حالت اولیه انیمیشن
+             */
+
+            opacity: 0;
+
+            transform: translateY(80px) scale(.96);
+
+            filter: blur(8px);
+
+            transition: opacity 1.2s ease,
+            transform 1.2s cubic-bezier(.16, 1, .3, 1),
+            filter 1.2s ease;
+
+        }
+
+
+        /* =========================================
+           حالت نمایش
+        ========================================= */
+
+        .footer-signature.is-visible .signature-name {
+
+            opacity: 1;
+
+            transform: translateY(0) scale(1);
+
+            filter: blur(0);
+
+        }
+
+
+        /* =========================================
+           تأخیر اسم دوم
+        ========================================= */
+
+        .footer-signature.is-visible .signature-salia {
+
+            transition-delay: .18s;
+
+        }
+
+
+        /* =========================================
+           موبایل
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .footer-signature {
+
+                min-height: 220px;
+
+                gap: 25px;
+
+                padding: 80px 15px 40px;
+
+            }
+
+            .signature-name {
+
+                font-size: clamp(
+                        55px,
+                        18vw,
+                        110px
+                );
+
+            }
+
+        }
+    </style>
 
     {% block extra_css %}
     {% endblock %}
@@ -45,10 +174,10 @@
         <div class="header-actions">
             {#      <button class="icon-btn" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>#}
             <button class="icon-btn" aria-label="حساب کاربری"><i class="fa-regular fa-user"></i></button>
-                  <button class="icon-btn cart-toggle" aria-label="سبد خرید">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                  </button>
+            <button class="icon-btn cart-toggle" aria-label="سبد خرید">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
             <button id="pwaInstallBtn" class="btn btn-mango btn-sm pwa-btn" hidden>
                 <i class="fa-solid fa-download"></i> نصب اپلیکیشن
             </button>
@@ -80,7 +209,8 @@
             <div class="socials">
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://t.me/+Edz3jMPm0pFkYTlk"><i class="fa-brands fa-telegram"></i></a>
-                <a href="https://chat.whatsapp.com/ClYB0SMpetdFMaZBjX1L93?s=cl&p=i&ilr=0&amv=1"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://chat.whatsapp.com/ClYB0SMpetdFMaZBjX1L93?s=cl&p=i&ilr=0&amv=1"><i
+                        class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
 
@@ -143,6 +273,18 @@
     <div class="footer-bottom container">
         <p>© ۲۰۲۶ BY SASH.CO — تمامی حقوق محفوظ است</p>
     </div>
+
+    <div class="footer-signature">
+
+    <span class="signature-name signature-arsh">
+        Arsh
+    </span>
+
+        <span class="signature-name signature-salia">
+        Salia
+    </span>
+
+    </div>
 </footer>
 
 {% block modals %}
@@ -150,6 +292,47 @@
 
 {% block extra_js %}
 {% endblock %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const signature =
+        document.querySelector(".footer-signature");
+
+    if (!signature) return;
+
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        signature.classList.add(
+                            "is-visible"
+                        );
+
+                        observer.unobserve(signature);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+
+    observer.observe(signature);
+
+});
+
+</script>
 <!-- script to install app by button of site -->
 <script>
     let deferredPrompt = null;
@@ -289,9 +472,9 @@
 <!-- script for MOBILE MENU that the hamberger menu open and close -->
 <script>
     /* =============== MOBILE MENU =============== */
-document.querySelector('.menu-toggle').onclick = ()=>{
-  document.querySelector('.main-nav').classList.toggle('open');
-};
+    document.querySelector('.menu-toggle').onclick = () => {
+        document.querySelector('.main-nav').classList.toggle('open');
+    };
 </script>
 </body>
 </html>
